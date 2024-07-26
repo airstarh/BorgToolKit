@@ -30,7 +30,6 @@ class BorgDb
 
     static public function checkAll()
     {
-        #
         return [
             'mysql'   => (bool)static::dbMySql(),
             'postgre' => (bool)static::dbPostgre(),
