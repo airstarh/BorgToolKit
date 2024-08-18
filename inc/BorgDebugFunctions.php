@@ -34,7 +34,7 @@ if (!function_exists('ffd')) {
 if (!function_exists('flog')) {
     function flog($data)
     {
-        BorgDebug::fDebug($data, true, $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'DEBUGLOG.html', null);
+        BorgDebug::fDebug($data, true, BORG_ROOT . DIRECTORY_SEPARATOR . 'DEBUGLOG.html', null);
     }
 }
 

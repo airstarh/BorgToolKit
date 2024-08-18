@@ -8,7 +8,7 @@ class BorgDebug
     public const LOG_YII_PATH = '/runtime/logs';
     private static string $fPath;
     private static string $startMicrotime;
-    private static array  $flagStarted = [];
+    private static array $flagStarted = [];
     //endregion FIELDS
     //region INIT
     static private function initMicrotime()
@@ -25,7 +25,7 @@ class BorgDebug
         }
 
         if (empty(static::$fPath)) {
-            static::$fPath = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'DEBUG.html';
+            static::$fPath = BORG_ROOT . DIRECTORY_SEPARATOR . 'DEBUG.html';
         }
 
         return static::$fPath;
@@ -130,7 +130,7 @@ class BorgDebug
     static public function checkExecution($data)
     {
         $data = self::jsonEncodeBeautiful($data);
-        $path = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'DEBUG.txt';
+        $path = BORG_ROOT . DIRECTORY_SEPARATOR . 'DEBUG.txt';
         file_put_contents($path, $data);
     }
 
@@ -177,21 +177,30 @@ class BorgDebug
 
     static public function getUserIp()
     {
-        if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) && !empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
             return $_SERVER['HTTP_X_FORWARDED_FOR'];
         }
-        if (isset($_SERVER['HTTP_CLIENT_IP']) && !empty($_SERVER['HTTP_CLIENT_IP'])) {
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             return $_SERVER['HTTP_CLIENT_IP'];
         }
+        if (!empty($_SERVER['REMOTE_ADDR'])) {
+            return $_SERVER['REMOTE_ADDR'];
+        }
+        if (!empty($_SERVER['USER_IP'])) {
+            return $_SERVER['USER_IP'];
+        }
 
-        return $_SERVER['REMOTE_ADDR'];
+        return '127.0.0.1';
     }
 
     static public function getReqMethod()
     {
-        return strtoupper($_SERVER['REQUEST_METHOD'] ?? 'NO_METHOD');
-    }
+        if (!empty($_SERVER['REQUEST_METHOD'])) {
+            return $_SERVER['REQUEST_METHOD'];
+        }
 
+        return 'CONSOLE';
+    }
 
     static public function getMemoryUsed()
     {
