@@ -4,13 +4,18 @@ define('BORG_MICROTIME', $_SERVER['REQUEST_TIME_FLOAT'] ?: microtime(TRUE));
 
 class BorgDebug
 {
+    ##################################################
     //region FIELDS
+
     public const LOG_YII_PATH = '/runtime/logs';
     private static string $fPath;
     private static string $startMicrotime;
     private static array $flagStarted = [];
+
     //endregion FIELDS
+    ##################################################
     //region INIT
+
     static private function initMicrotime()
     {
         if (static::$startMicrotime) return static::$startMicrotime;
@@ -32,6 +37,14 @@ class BorgDebug
     }
 
     //endregion INIT
+    ##################################################
+    // rigion DEBUG
+
+    static public function prepareOutput()
+    {
+
+    }
+
     static public function fDebug($data, $isLog = false, $fPath = null, string $transform = null): void
     {
         $fPath = static::initLogFilePath($fPath);
@@ -158,7 +171,10 @@ class BorgDebug
         return $output;
     }
 
+    // endrigion DEBUG
     ##################################################
+    // region UTILS/HELPERS
+
     static public function getMicroTimeDifferenceFromNow($microtime)
     {
         return microtime(TRUE) - $microtime;
@@ -207,9 +223,6 @@ class BorgDebug
         return number_format(memory_get_usage(), 10, '.', ' ');
     }
 
-    ##################################################
-
-    ##################################################
     static public function template($fileFullPath, $data = NULL)
     {
         $fileFullPath = realpath($fileFullPath);
@@ -221,7 +234,6 @@ class BorgDebug
         return $output;
     }
 
-    ##################################################
     static public function jsonEncodeBeautiful($s)
     {
         $flags = JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
@@ -271,6 +283,7 @@ class BorgDebug
         //throw new \Exception('Unable to convert to object');
         return (object)[];
     }
-
+    
+    // endregion UTILS/HELPERS
     ##################################################
 }

@@ -1,9 +1,28 @@
 <?php
 require_once __DIR__ . '/../index.php';
 $s = [
-    'null, 1234, 1.258"',
+    0,
+    '0',
+    1,
+    '1',
+    true,
+    false,
+    null,
+    'true',
+    'false',
+    'null',
+    '{}',
+    '[]',
+    'some',
+    -1,
+    '-1',
+
 ];
-$d = array_map('castArray', $s);
+$d = [];
+foreach($s as $k=>$v){
+    $title = var_export($v, true);
+    $d["FOR $title"] = filter_var($v, FILTER_VALIDATE_BOOLEAN, false);
+}
 
 echo PHP_EOL;
 var_export($s);
