@@ -8,9 +8,9 @@ class BorgDebug
     //region FIELDS
 
     public const LOG_YII_PATH = '/runtime/logs';
-    private static string $fPath;
     private static string $startMicrotime;
     private static array $flagStarted = [];
+    private static array $counterCalls = [];
 
     //endregion FIELDS
     ##################################################
@@ -23,17 +23,23 @@ class BorgDebug
         return static::$startMicrotime;
     }
 
-    static protected function initLogFilePath(?string $fPath = null)
+    static protected function initLogFilePath(?string $fPath = null, $transform = null)
     {
-        if ($fPath) {
-            static::$fPath = $fPath;
+        $fPath = $fPath ?? BORG_ROOT . DIRECTORY_SEPARATOR . 'DEBUG.html';
+
+        switch ($transform) {
+            case 'php':
+                $fPath = $fPath . '.php';
+                break;
+
+            case 'json':
+                $fPath = $fPath . '.yaml';
+                break;
+            default:
+                break;
         }
 
-        if (empty(static::$fPath)) {
-            static::$fPath = BORG_ROOT . DIRECTORY_SEPARATOR . 'DEBUG.html';
-        }
-
-        return static::$fPath;
+        return $fPath;
     }
 
     //endregion INIT
@@ -42,17 +48,55 @@ class BorgDebug
 
     static public function prepareOutput()
     {
-
+        #TODO or Delete
     }
 
     static public function fDebug($data, $isLog = false, $fPath = null, string $transform = null): void
     {
-        $fPath = static::initLogFilePath($fPath);
+        $fPath = static::initLogFilePath($fPath, $transform);
+
+        ###############################
+        # region FLAGS, COUNTERs, etc.
+        static::$flagStarted[$fPath]  = static::$flagStarted[$fPath] ?? false;
+        static::$counterCalls[$fPath] = isset(static::$counterCalls[$fPath])
+            ? ++static::$counterCalls
+            : 1;
+        # endregion FLAGS, COUNTERs, etc.
+        ###############################
+        # region CLARIFY TEMPLATE
 
         switch ($transform) {
+            case 'php':
+                $output = $data;
+
+                ##################################################
+                #region TEMPLATE
+
+                ob_start();
+                ob_implicit_flush(FALSE);
+                echo PHP_EOL;
+                echo '<?php';
+                echo PHP_EOL;
+                echo sprintf('$callCounter%s = ', static::$counterCalls[$fPath]);
+                echo PHP_EOL;
+
+                static::dump($output);
+
+                echo PHP_EOL;
+                echo ';';
+                echo PHP_EOL;
+                echo '';
+                echo PHP_EOL;
+
+                #endregion TEMPLATE
+                ##################################################
+
+                $output = ob_get_clean();
+
+                break;
+
             case 'json':
                 $output = static::jsonEncodeBeautiful($data);
-                $fPath  = $fPath . '.yaml';
                 break;
             case 'flat':
                 //ToDO:
@@ -75,17 +119,26 @@ class BorgDebug
                 echo PHP_EOL;
                 echo '<h2> <<<<<<<<<<<<<<<<<<<< </h2>';
                 echo PHP_EOL;
-                $output = ob_get_clean();
                 #endregion TEMPLATE
                 ##################################################
+
+                $output = ob_get_clean();
+
                 break;
         }
 
-        static::$flagStarted[$fPath] = static::$flagStarted[$fPath] ?? false;
+        # endregion CLARIFY TEMPLATE
+        ###############################
+        # region CLEAN IF NOT_LOG AND THE FIRST EXECUTION
+
         if (static::$flagStarted[$fPath] === false && $isLog === false) {
             file_put_contents($fPath, PHP_EOL, 0);
             static::$flagStarted[$fPath] = true;
         }
+
+        # endregion CLEAN IF NOT_LOG AND THE FIRST EXECUTION
+        ###############################
+        # region PREPEND LOG DATA: memory, UP, etc.
 
         if ($isLog) {
             $date   = static::getNow();
@@ -103,8 +156,15 @@ class BorgDebug
             file_put_contents($fPath, $prefix, FILE_APPEND);
         }
 
+        # endregion PREPEND LOG DATA: memory, UP, etc.
+        ###############################
+        # region LOG
+
         file_put_contents($fPath, $output, FILE_APPEND);
         file_put_contents($fPath, PHP_EOL . PHP_EOL, FILE_APPEND);
+
+        # endregion LOG
+        ###############################
     }
 
     static public function dDebug($data)
@@ -283,7 +343,7 @@ class BorgDebug
         //throw new \Exception('Unable to convert to object');
         return (object)[];
     }
-    
+
     // endregion UTILS/HELPERS
     ##################################################
 }
