@@ -59,7 +59,7 @@ class BorgDebug
         # region FLAGS, COUNTERs, etc.
         static::$flagStarted[$fPath]  = static::$flagStarted[$fPath] ?? false;
         static::$counterCalls[$fPath] = isset(static::$counterCalls[$fPath])
-            ? ++static::$counterCalls
+            ? ++static::$counterCalls[$fPath]
             : 1;
         # endregion FLAGS, COUNTERs, etc.
         ###############################
@@ -146,6 +146,7 @@ class BorgDebug
             $method = static::getReqMethod();
             $memory = static::getMemoryUsed();
             $prefix = implode(' | ', [
+                '#######',
                 $date,
                 $ip,
                 $method,

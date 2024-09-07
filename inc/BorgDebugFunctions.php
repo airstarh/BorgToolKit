@@ -44,3 +44,10 @@ if (!function_exists('ffj')) {
         BorgDebug::jDebug($data);
     }
 }
+
+if (!function_exists('plog')) {
+    function plog($data)
+    {
+        BorgDebug::fDebug($data, true, null, 'php');
+    }
+}
