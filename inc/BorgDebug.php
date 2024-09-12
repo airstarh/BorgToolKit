@@ -75,7 +75,7 @@ class BorgDebug
                 ob_start();
                 ob_implicit_flush(FALSE);
                 echo PHP_EOL;
-                echo '<?php';
+                if (static::$flagStarted[$fPath] === false) echo '<?php';
                 echo PHP_EOL;
                 echo sprintf('$callCounter%s = ', static::$counterCalls[$fPath]);
                 echo PHP_EOL;
