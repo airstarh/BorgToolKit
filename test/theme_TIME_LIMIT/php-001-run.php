@@ -1,15 +1,12 @@
 <?php
-require_once __DIR__ . '/../index.php';
+require_once __DIR__ . '/../../index.php';
+require_once './php-001.php';
 
-function asd()
-{
-    if ($a = 0)
-        return true;
-    return false;
+$TimeTest = new TimeTest();
 
-}
 
-$res = in_array(958, [1]);
+
+$res = $TimeTest->main();
 
 echo PHP_EOL;
 echo PHP_EOL;
