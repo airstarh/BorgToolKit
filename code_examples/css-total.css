@@ -50,6 +50,9 @@ html
 , h4
 , ul
 , dl
+, #header
+, #content
+, #footer
 {
     box-sizing: border-box;
     background-color: var(--bg-default) !important;
@@ -62,11 +65,16 @@ html
     }
 
     pre
+    , code
+    , pre *
+    , code *
     , .box
-    , fieldset
+    , *[class*=code]
+    , *[class*=code] span
     {
         background-color: var(--bg-pre) !important;
         color: var(--txt-pre) !important;
+        background-image: none !important;
     }
 }
 
@@ -178,12 +186,16 @@ color: #fff !important;
 }
 tr:hover
 , tr:hover td
+, tr:hover th
+, tr:hover tf
 {
     background-color: var(--link-bg-hover) !important;
     color: var(--link-txt-hever) !important;
     opacity: 1 !important;
 }
-td {
+td 
+, th
+{
     background-color: transparent !important;
     opacity: 1;
 }
@@ -192,9 +204,10 @@ td {
 /* region SPECIFIC */
 .issue
 , div.issue
-, div.issue *:not(a)
+, div.issue *:not(a, input, textarea, select, button, .select2 *)
 {
     background-color: #490076 !important;
+    color: var(--col-w-50)
 }
 
 .subject {
@@ -203,9 +216,13 @@ td {
 }
 
 .journal {
-    margin-top: 150px;
-    padding: 20px;
-    outline: 10px #6c6b6b solid;
+    margin-top: 100px;
+    padding: 15px 0; 
+    background-color:var(--col-b-100) !important;
+    & *:not(a, button, select, textarea) {
+        background-color:var(--col-b-100) !important;
+        color: var(--col-w-0)
+    }
 }
 
 .white-bg
