@@ -1,0 +1,216 @@
+/* region VARS */
+:root {
+    --corporate-gradient-danger: 0deg, #f00 0%, black 100%;
+
+    --col-w-100: #fff;
+    --col-w-50: #bbb;
+    --col-w-0: #999;
+
+    --col-b-100: #000;
+    --col-b-50: #222;
+    --col-b-0: #444;
+    
+    --bg-default: #222;
+        --txt-default: var(--col-w-50);
+
+    --bg-selection: #0000ff;
+        --txt-selection: var(--col-w-100);
+
+    --bg-disabled: #555;
+
+    --bg-active: #1f8904;
+
+    --link-bg: #719ffd;
+        --link-txt: var(--col-b-50);
+    --link-bg-hover: blue;
+        --link-txt-hever: var(--col-w-100);
+    --link-bg-visied: purple;
+
+
+    --bg-pre: var(--col-b-100);
+        --txt-pre: #00cf00;
+
+    /* FORM */
+    --bg-button: #a85600;
+
+    --bg-input: #9cffed;
+
+    --bg-select: rgb(124, 238, 107);
+        --bg-select-hover: blue;
+            --bg-select-checked: green;
+}
+/* endregion VARS */
+/* region GLOBAL */
+html
+, body
+, div
+, h1
+, h2
+, h3
+, h4
+, ul
+, dl
+{
+    box-sizing: border-box;
+    background-color: var(--bg-default) !important;
+    color: #fff !important;
+    opacity: 1;
+
+    & *::selection {
+        background-color: blue !important;
+        color: #fff !important;
+    }
+
+    pre
+    , .box
+    , fieldset
+    {
+        background-color: var(--bg-pre) !important;
+        color: var(--txt-pre) !important;
+    }
+}
+
+a {
+    background-color: var(--link-bg) !important;
+    color: var(--link-txt) !important;
+}
+a:hover
+, button:hover
+, .btn:hover
+{
+    background-color: var(--link-bg-hover) !important;
+    color: var(--link-txt-hever) !important;
+}
+.active
+, .active a
+, a:active
+, a.active
+, a.selected
+{
+    background-color: var(--bg-active) !important;
+    color: #fff !important;
+}
+/* endregion GLOBAL */
+/* region CSS ADDON */
+.ucss-panel
+{
+    outline: #846593 10px solid ;
+    background-color: var(--bg-default);
+    color: var(--col-w-100) ;
+}
+/* endregion CSS ADDON */
+
+/* region FORM */
+input
+, input.form-control
+, * input.checkbox
+, input[type=checkbox]
+, input[type=radio]
+,textarea
+{
+    background-color: var(--bg-input);
+    color: #000 ;
+}
+
+select
+, select.form-control
+, .select2
+, .select2 *
+, .select2-container
+, .select2-container *
+, .select2-selection__rendered
+, .select2-selection__rendered *
+, .select2-selection
+, .select2-selection--single
+{
+    background-color: var(--bg-select) !important;
+    color: #222 !important;
+
+    & option:hover
+    , & li:hover
+    , & li.select2-results__option--highlighted
+    {
+        background-color: var(--bg-select-hover) !important;
+    }
+    & option:checked
+    , & li.select2-selection__choice
+    {
+        background-color: var(--bg-select-checked) !important;
+    }
+}
+
+button
+, input[type=button]
+, input[type=submit]
+, .icon
+, .icon-only
+, .btn
+{
+    border-color: var(--bg-button);
+    outline-color: var(--bg-button);
+    background-color: var(--bg-button) !important;
+    color: var(--col-w-100) !important;
+}
+
+*:disabled
+, .disabled
+, .disabled *
+, .inactive
+, .inactive *
+, .form-control.disabled
+, .form-control .disabled
+, .form-control[disabled=disabled]
+, .form-control[readonly]
+{
+    background-color: var(--col-w-0) !important;
+    color: var(--col-b-100) !important;
+}
+/* endregion FORM */
+/* region table */
+table
+, thead
+, tbody
+, tfoot
+, tr
+{
+background-color: #222 !important;
+color: #fff !important;
+}
+tr:hover
+, tr:hover td
+{
+    background-color: var(--link-bg-hover) !important;
+    color: var(--link-txt-hever) !important;
+    opacity: 1 !important;
+}
+td {
+    background-color: transparent !important;
+    opacity: 1;
+}
+/* endregion table */
+
+/* region SPECIFIC */
+.issue
+, div.issue
+, div.issue *:not(a)
+{
+    background-color: #490076 !important;
+}
+
+.subject {
+    padding: 15px;
+    font-weight: bold;
+}
+
+.journal {
+    margin-top: 150px;
+    padding: 20px;
+    outline: 10px #6c6b6b solid;
+}
+
+.white-bg
+, .gray-bg
+{
+    background-color: #333;
+}
+/* endregion SPECIFIC */
