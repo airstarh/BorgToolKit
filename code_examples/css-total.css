@@ -10,7 +10,7 @@
     --col-b-50: #222;
     --col-b-0: #444;
     
-    --bg-default: #222;
+    --bg-default: var(--col-b-50);
         --txt-default: var(--col-w-50);
 
     --bg-selection: #0000ff;
@@ -23,7 +23,7 @@
     --link-bg: #719ffd;
         --link-txt: var(--col-b-50);
     --link-bg-hover: blue;
-        --link-txt-hever: var(--col-w-100);
+        --link-txt-hover: var(--col-w-100);
     --link-bg-visied: purple;
 
 
@@ -49,14 +49,23 @@ html
 , h3
 , h4
 , ul
+, ul li
 , dl
+, fieldset
+, legend
+, p
+, span
+, aside
+, header
+, content
+, footer
+, section
 , #header
 , #content
 , #footer
 {
-    box-sizing: border-box;
     background-color: var(--bg-default) !important;
-    color: #fff !important;
+    color: var(--txt-default) !important;
     opacity: 1;
 
     & *::selection {
@@ -68,7 +77,8 @@ html
     , code
     , pre *
     , code *
-    , .box
+    , blockquote
+    , blockquote *
     , *[class*=code]
     , *[class*=code] span
     {
@@ -79,15 +89,17 @@ html
 }
 
 a {
-    background-color: var(--link-bg) !important;
-    color: var(--link-txt) !important;
+    /* background-color: var(--link-bg) !important; */
+    /* color: var(--link-txt) !important; */
+    background-color: #7b66ff !important;
+    color: var(--col-b-100) !important;
 }
 a:hover
 , button:hover
 , .btn:hover
 {
     background-color: var(--link-bg-hover) !important;
-    color: var(--link-txt-hever) !important;
+    color: var(--link-txt-hover) !important;
 }
 .active
 , .active a
@@ -114,10 +126,11 @@ input
 , * input.checkbox
 , input[type=checkbox]
 , input[type=radio]
-,textarea
+, textarea
+, textarea.form-control
 {
     background-color: var(--bg-input);
-    color: #000 ;
+    color: var(--col-b-50) ;
 }
 
 select
@@ -190,7 +203,7 @@ tr:hover
 , tr:hover tf
 {
     background-color: var(--link-bg-hover) !important;
-    color: var(--link-txt-hever) !important;
+    color: var(--link-txt-hover) !important;
     opacity: 1 !important;
 }
 td 
