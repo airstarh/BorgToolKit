@@ -50,4 +50,12 @@ if (!function_exists('plog')) {
     {
         BorgDebug::fDebug($data, true, null, 'php');
     }
+
+    if (!function_exists('plogBack')) {
+        function plogBack()
+        {
+            $data = debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT);
+            plog($data);
+        }
+    }
 }

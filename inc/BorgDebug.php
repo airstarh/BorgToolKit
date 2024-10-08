@@ -44,7 +44,7 @@ class BorgDebug
 
     //endregion INIT
     ##################################################
-    // rigion DEBUG
+    // region DEBUG
 
     static public function prepareOutput()
     {
@@ -232,7 +232,7 @@ class BorgDebug
         return $output;
     }
 
-    // endrigion DEBUG
+    // endregion DEBUG
     ##################################################
     // region UTILS/HELPERS
 

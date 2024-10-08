@@ -59,6 +59,7 @@ html
 , header
 , content
 , footer
+, main
 , section
 , #header
 , #content
@@ -102,7 +103,8 @@ a:hover
     color: var(--link-txt-hover) !important;
 }
 .active
-, .active a
+, .selected
+, .active>a
 , a:active
 , a.active
 , a.selected
