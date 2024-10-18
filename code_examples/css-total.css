@@ -22,7 +22,7 @@
 
     --link-bg: #719ffd;
         --link-txt: var(--col-b-50);
-    --link-bg-hover: blue;
+    --link-bg-hover: rgb(0, 38, 95);
         --link-txt-hover: var(--col-w-100);
     --link-bg-visied: purple;
 
@@ -61,6 +61,7 @@ html
 , footer
 , main
 , section
+, nav
 , #header
 , #content
 , #footer
@@ -166,11 +167,12 @@ button
 , input[type=button]
 , input[type=submit]
 , .icon
+, [class*=icon]
 , .icon-only
 , .btn
 {
-    border-color: var(--bg-button);
-    outline-color: var(--bg-button);
+    border-color: var(--bg-button) !important;
+    outline-color: var(--bg-button) !important;
     background-color: var(--bg-button) !important;
     color: var(--col-w-100) !important;
 }
