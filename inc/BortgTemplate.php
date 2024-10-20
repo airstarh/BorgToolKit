@@ -68,7 +68,7 @@ class BorgTemplate
         return $tag;
     }
 
-    static public function allContent($content)
+    static public function allContent($content = '')
     {
         return $content;
     }

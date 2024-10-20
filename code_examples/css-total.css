@@ -1,3 +1,7 @@
+/*
+@import url("//borg.home/BorgToolKit/code_examples/css-total.css");
+*/
+
 /* region VARS */
 :root {
     --corporate-gradient-danger: 0deg, #f00 0%, black 100%;
@@ -18,7 +22,7 @@
 
     --bg-disabled: #555;
 
-    --bg-active: #1f8904;
+    --bg-active: #146600;
 
     --link-bg: #719ffd;
         --link-txt: var(--col-b-50);
@@ -31,7 +35,7 @@
         --txt-pre: #00cf00;
 
     /* FORM */
-    --bg-button: #a85600;
+    --bg-button: #a85600ee;
 
     --bg-input: #9cffed;
 
@@ -62,6 +66,8 @@ html
 , main
 , section
 , nav
+, sl-details
+, label
 , #header
 , #content
 , #footer
@@ -88,6 +94,12 @@ html
         color: var(--txt-pre) !important;
         background-image: none !important;
     }
+}
+
+:after
+, :before
+{
+    opacity: 1 !important;
 }
 
 a {
@@ -164,17 +176,23 @@ select
 }
 
 button
-, input[type=button]
-, input[type=submit]
+, [type=button]
+, [type=submit]
 , .icon
 , [class*=icon]
 , .icon-only
 , .btn
 {
+    opacity: 1 !important;
     border-color: var(--bg-button) !important;
     outline-color: var(--bg-button) !important;
     background-color: var(--bg-button) !important;
     color: var(--col-w-100) !important;
+
+    &:hover {
+        background-color: var(--col-w-0) !important;
+        color: var(--col-b-0) !important;
+    }
 }
 
 *:disabled
@@ -217,6 +235,15 @@ td
     opacity: 1;
 }
 /* endregion table */
+
+/* region ERROR */
+[class*=error]
+, [class*=Error]
+{
+    background-color: rgb(164, 0, 0) !important;
+    color: yellow !important;
+}
+/* endregion ERROR */
 
 /* region SPECIFIC */
 .issue

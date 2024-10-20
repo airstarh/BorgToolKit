@@ -1,0 +1,31 @@
+/*
+@import url("https://borg.home/css-4p.css");
+*/
+* {
+    /*outline: red solid 1px;*/
+}
+
+#widgethelp_uniquecssid,
+#header-title,
+#header-auth,
+#main-menu,
+iframe,
+.page-right {
+    display: none !important;
+}
+
+.page-left {
+    font-size: 7mm !important;
+}
+#header-title {
+    outline: red solid 1px;
+    display: none !important
+}
+
+#header {
+    background: url(https://4pera.com/bitrix/templates/info_light_gray/images/city.jpg) top left no-repeat !important;
+}
+
+@media print {
+
+}
