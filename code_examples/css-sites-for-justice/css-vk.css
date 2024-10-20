@@ -1,0 +1,99 @@
+
+.FCPanel,
+#notifiers_wrap,
+#side_bar,
+.narrow_column_wrap,
+#stl_side,
+    /*#page_header_cont,*/
+.replies {
+    display: none !important;
+}
+
+
+#page_body {
+    /*width: 75vw !important;*/
+}
+
+._post {
+    width: 99vw !important;
+}
+
+._post::before {
+    /*content: attr(PostHeaderSubtitle__link);*/
+}
+
+.PrimaryAttachment {
+
+    margin: 0 !important;
+    width: 45vw !important;
+    /*height: 15vh !important;*/
+}
+
+body,
+body *,
+#page_layout,
+#page_layout *,
+#page_layout .fl_r, #page_layout .fl_l,
+#page_body,
+#page_body.fl_r,
+.fl_r, .fl_l,
+.fl_r, *.fl_l {
+    float: none !important;
+}
+
+#page_layout {
+    margin: 0 !important;
+    width: auto !important;
+}
+
+body {
+    /*padding: 40mm 10mm 20mm 10mm !important;*/
+}
+
+#page_header_cont {
+    position: relative !important;
+    display: block !important;
+    width: 90vw !important;
+    /*outline: red solid 11px;*/
+    /*margin-top: 25mm !important;*/
+}
+
+
+
+
+
+
+
+@media print {
+
+    .post_content {
+        font-size: 7mm !important;
+        color: #000 !important;
+    }
+
+    @page {
+        margin: 17mm;
+        size: A4;
+
+        @top-left {
+            content: "VK";
+        }
+
+        @top-center {
+            content: "VK";
+        }
+
+        @top-right {
+            content: "VK";
+        }
+
+        @top {
+            content: "VK";
+        }
+
+        @bottom-center {
+            content: "Вконтакте";
+        }
+    }
+}
+

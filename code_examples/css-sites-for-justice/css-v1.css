@@ -1,0 +1,14 @@
+* {
+    /*outline: red solid 1px;*/
+}
+
+.articleSubHeader_HojKc,
+.container_NtHB4,
+.baseBlock_D2VoW,
+.articleBottom_dC3z2,
+.blockEditorial_uAIcM,
+.wrapper_W7lmS,
+.articleCommentsBlock_TBZAk,
+.personalSelectionLazy_Ck6G4 {
+    display: none !important;
+}
