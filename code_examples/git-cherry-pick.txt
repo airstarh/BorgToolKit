@@ -1,0 +1,26 @@
+Как склеить коммиты и зачем это нужно
+https://htmlacademy.ru/blog/git/how-to-squash-commits-and-why-it-is-needed
+
+
+git checkout scr618267
+git checkout scr634818
+git rebase scr634818
+
+
+
+git cherry -v develop
+git cherry -v scr634818 | wc -l
+git rebase -i scr634818
+
+
+
+git cherry -v develop
+git cherry -v develop | wc -l
+git rebase -i develop
+
+
++ 8d8f16c53a9139ae568181a4d50985fe96d2a6a6 SCR #618267 - Tournament UI: Behavior corrections in Freeround Games popup;
++ ed02379db4c21ffac67a19ffb5707eed062ee97b SCR #634818 - Get rid of hard code in Freeround Games (Tournaments and Bonuses);
+
+git rebase -i HEAD~2
+
