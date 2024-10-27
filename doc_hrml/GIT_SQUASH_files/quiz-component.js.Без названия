@@ -1,0 +1,155 @@
+class QuizComponent extends HTMLElement {
+    constructor() {
+        super();
+        this.quizData = null;
+    }
+
+    connectedCallback() {
+        const quizId = this.getAttribute('data-id');
+        this.fetchQuiz(quizId).then(data => {
+            this.quizData = data;
+            this.render();
+        });
+    }
+
+    async fetchQuiz(id) {
+        try {
+            const response = await fetch(`https://vir-lab.ru/quiz/quiz.php?id=${id}`);
+            if (!response.ok) throw new Error('Network response was not ok');
+            return await response.json();
+        } catch (error) {
+            console.error('There was a problem with the fetch operation:', error.message);
+        }
+    }
+
+    render() {
+        if (!this.quizData) return;
+    
+        this.innerHTML = `
+    <style>
+        .option {
+            padding: 10px;
+            border: 1px solid #ccc;
+            font-size: 21px;
+            text-align: left;
+            border-radius: 15px;
+            cursor: pointer;
+            margin-bottom: 5px;
+            padding-left: 15px;
+            background-color: #f7f7f7;
+           /* transition: background-color 0.3s ease, color 1s ease;  /* Transition for smoother changes */*/
+           transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+           box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Initial subtle shadow */
+        }
+
+        h3 {
+            font-size: 30px;
+            font-weight: 400;
+            width: 70%;
+            font-family: 'Unbounded', cursive;
+        }
+
+        .option:hover {
+            transform: translateY(-5px); /* Move the option up by 5px */
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Increased shadow to give depth */
+        }
+        
+
+        .option.correct {
+            background-color: #66cc66;
+            color: #fff;
+        }
+
+        .option.incorrect {
+            background-color: #ff6666;
+            color: #fff;
+        }
+
+        .quiz-container {
+            border-radius: 15px;
+            border: 1px solid #ccc;
+            padding: 20px 30px 20px 20px; /* increased padding on the right */
+            position: relative; /* to make sure the child absolute position relates to this container */
+        }
+
+        .self-check-label {
+            background-color: #FFA500;
+            border-radius: 10px;
+            color: white;
+            padding: 5px 10px;
+            font-size: 14px;
+            position: absolute;
+            top: 15px; /* adjust this to move the label up/down */
+            right: 10px; /* adjust this to move the label left/right */
+            z-index: 10; /* make sure the label is on top */
+        }
+    </style>
+
+    <div class="quiz-container">
+    <h3>${this.quizData.question}</h3>
+    <div class="self-check-label">Самопроверка</div>
+    ${this.quizData.options.map((option, index) => `
+        <div class="option" data-value="${index + 1}">${option}</div>
+    `).join('')}
+
+    <div id="result"></div>
+</div>
+`;
+        this.querySelectorAll('.option').forEach(optionDiv => {
+            optionDiv.addEventListener('click', (e) => {
+                const selectedValue = e.currentTarget.getAttribute('data-value');
+                this.checkAnswer(selectedValue);
+                this.sendClickData(selectedValue); // add this line
+            });
+        });
+    }
+    
+    checkAnswer(selectedValue) {
+        const correctValue = this.quizData.correct;
+        if (parseInt(selectedValue) == correctValue) {
+            this.querySelector(`.option[data-value="${selectedValue}"]`).classList.add('correct');
+            this.querySelector('#result').textContent = 'Верно!';
+        } else {
+            this.querySelector(`.option[data-value="${selectedValue}"]`).classList.add('incorrect');
+            this.querySelector('#result').textContent = 'Неправильный ответ, попробуйте ещё раз.';
+        }
+    }
+    
+    sendClickData(selectedValue) {
+        console.log("Sending data for question: " + this.getAttribute('data-id') + ", option: " + selectedValue);
+    
+        fetch('https://vir-lab.ru/quiz/track_click.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                question_id: this.getAttribute('data-id'),
+                option_value: selectedValue,
+            }),
+        })
+        .then(response => {
+            // Check if the response is ok, otherwise reject it
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Success:', data);
+            // You can also handle data here, for instance:
+            if (data.status === 'success') {
+                console.log('Click data recorded successfully.');
+            } else if (data.error) {
+                console.warn('Server reported an error:', data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+    
+    
+}
+
+customElements.define('quiz-component', QuizComponent);
