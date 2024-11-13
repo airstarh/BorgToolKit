@@ -69,9 +69,11 @@ html
 , sl-details
 , small
 , label
+, form
 , #header
 , #content
 , #footer
+, [class*=crayon] *
 {
     background-color: var(--bg-default) !important;
     color: var(--txt-default) !important;
@@ -112,6 +114,7 @@ a {
 a:hover
 , button:hover
 , .btn:hover
+, .over
 {
     background-color: var(--link-bg-hover) !important;
     color: var(--link-txt-hover) !important;
@@ -217,6 +220,7 @@ table
 , tbody
 , tfoot
 , tr
+, tr.active-table-line
 {
 background-color: #222 !important;
 color: #fff !important;

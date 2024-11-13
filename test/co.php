@@ -2,23 +2,13 @@
 require_once __DIR__ . '/../index.php';
 
 $a = [
-    'key' =>
-        [
-            'a' => 'a',
-            'b' => 'b',
-        ],
+    'aaa' => [
+        'bbb' => 100,
+    ],
 ];
 
-foreach ($a as $key => $v) {
-    $v['d'] = 'd';
-}
+$res = DataHelper::setByPath('', '=',['asd' => 123,], $b);
 
-echo PHP_EOL;
-echo PHP_EOL;
-echo '##################################################';
-echo PHP_EOL;
-var_export($a);
-echo PHP_EOL;
-echo '##################################################';
-echo PHP_EOL;
-echo PHP_EOL;
+BorgDebug::dumpBeautiful($b);
+BorgDebug::dumpBeautiful($res);
+BorgDebug::dumpBeautiful(explode('/', ''));

@@ -232,6 +232,20 @@ class BorgDebug
         return $output;
     }
 
+    static public function dumpBeautiful($data)
+    {
+        echo PHP_EOL;
+        echo PHP_EOL;
+        echo '##################################################';
+        echo PHP_EOL;
+        var_export($data);
+        echo PHP_EOL;
+        echo '##################################################';
+        echo PHP_EOL;
+        echo PHP_EOL;
+
+    }
+
     // endregion DEBUG
     ##################################################
     // region UTILS/HELPERS
