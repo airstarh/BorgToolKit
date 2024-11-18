@@ -22,13 +22,11 @@
 
     --bg-disabled: #555;
 
-    --bg-active: #146600;
+    --bg-active: none #146600;
 
-    --link-bg: #719ffd;
-        --link-txt: var(--col-b-50);
-    --link-bg-hover: rgb(0, 38, 95);
-        --link-txt-hover: var(--col-w-100);
-    --link-bg-visied: purple;
+    --link-bg: linear-gradient(180deg, #1b06a2 0%, #4e41a2 50%) #7b66ff;
+    --link-bg-hover: none  rgba(0, 38, 95, .9);
+    --link-bg-visited: none purple;
 
 
     --bg-pre: var(--col-b-100);
@@ -104,21 +102,33 @@ html
 {
     opacity: 1 !important;
 }
+/* region LINKS ANCHORS */
+a 
+{
+    background: var(--link-bg) !important;
+    color: var(--col-w-100) !important;
 
-a {
-    /* background-color: var(--link-bg) !important; */
-    /* color: var(--link-txt) !important; */
-    background-color: #7b66ff !important;
-    color: var(--col-b-100) !important;
+    & * {
+        background: none transparent !important;          
+        color: var(--col-w-100) !important;
+    }
 }
+
 a:hover
 , button:hover
 , .btn:hover
-, .over
+, [class*=btn]:hover
+, a[class*=link]:hover
 {
-    background-color: var(--link-bg-hover) !important;
-    color: var(--link-txt-hover) !important;
+    background: var(--link-bg-hover) !important;
+    color: var(--col-w-100) !important;
+
+    & * {
+        background: var(--link-bg-hover) !important;
+        color: var(--col-w-100) !important;
+    }
 }
+
 .active
 , .selected
 , .active>a
@@ -126,10 +136,12 @@ a:hover
 , a.active
 , a.selected
 , [class*=active]
+, .active-table-line
 {
-    background-color: var(--bg-active) !important;
-    color: #fff !important;
+    background: var(--bg-active) !important;
+    color: var(--col-w-100) !important;
 }
+/* endregion LINKS ANCHORS */
 /* endregion GLOBAL */
 /* region CSS ADDON */
 .ucss-panel
@@ -194,9 +206,12 @@ button
     background-color: var(--bg-button) !important;
     color: var(--col-w-100) !important;
 
-    &:hover {
-        background-color: var(--col-w-0) !important;
-        color: var(--col-b-0) !important;
+    & * {
+        opacity: 1 !important;
+        background-color: var(--bg-button) !important;
+        background-image: inherit !important;
+        background-attachment: inherit !important;
+        color: var(--col-w-100) !important;
     }
 }
 
@@ -214,37 +229,43 @@ button
     color: var(--col-b-100) !important;
 }
 /* endregion FORM */
+
 /* region table */
 table
 , thead
 , tbody
 , tfoot
 , tr
-, tr.active-table-line
 {
-background-color: #222 !important;
-color: #fff !important;
+    background-color: #222 !important;
+    color: var(--col-w-0) !important;
 }
-tr:hover
-, tr:hover td
-, tr:hover th
-, tr:hover tf
-{
-    background-color: var(--link-bg-hover) !important;
-    color: var(--link-txt-hover) !important;
-    opacity: 1 !important;
-}
+
 td 
 , th
 {
     background-color: transparent !important;
     opacity: 1;
 }
+
+tr:hover
+, tr:hover td
+, tr:hover th
+, tr:hover tf
+{
+    background-color: var(--col-b-0) !important;
+    color: var(--col-w-0) !important;
+    opacity: 1 !important;
+}
 /* endregion table */
 
 /* region ERROR */
 [class*=error]
 , [class*=Error]
+, [class*=not-valid]
+, [class*=invalid]
+, [class*=danger]
+, [class*=warning]
 {
     background-color: rgb(164, 0, 0) !important;
     color: yellow !important;
