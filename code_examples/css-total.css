@@ -24,9 +24,9 @@
 
     --bg-active: none #146600;
 
-    --link-bg: linear-gradient(180deg, #1b06a2 0%, #4e41a2 50%) #7b66ff;
-    --link-bg-hover: none  rgba(0, 38, 95, .9);
-    --link-bg-visited: none purple;
+    --link-bg: #7b66ff linear-gradient(180deg, #1b06a2 0%, #4e41a2 50%);
+    --link-bg-hover: rgb(0, 17, 255);
+    --link-bg-visited: purple none;
 
 
     --bg-pre: var(--col-b-100);
@@ -42,6 +42,7 @@
             --bg-select-checked: green;
 }
 /* endregion VARS */
+
 /* region GLOBAL */
 html
 , body
@@ -100,12 +101,14 @@ html
 :after
 , :before
 {
-    opacity: 1 !important;
+    /* opacity: 1 !important; */
+    /* background-color: var(--col-b-50) !important; */
+    /* color: var(--col-w-50) !important; */
 }
 /* region LINKS ANCHORS */
 a 
 {
-    background: var(--link-bg) !important;
+    background: var(--link-bg);
     color: var(--col-w-100) !important;
 
     & * {
@@ -113,22 +116,25 @@ a
         color: var(--col-w-100) !important;
     }
 }
+/* region HOVER */
+a:not([class*=icon]):hover
+, a[class*=link]:hover
+{
+    background-clip: padding-box !important;
+    background: var(--link-bg-hover) !important;
+    color: var(--col-w-100) !important;
+}
 
-a:hover
+[class*=icon]:hover
 , button:hover
 , .btn:hover
 , [class*=btn]:hover
-, a[class*=link]:hover
 {
-    background: var(--link-bg-hover) !important;
+    background-clip: padding-box !important;
+    background-color: var(--link-bg-hover) !important;
     color: var(--col-w-100) !important;
-
-    & * {
-        background: var(--link-bg-hover) !important;
-        color: var(--col-w-100) !important;
-    }
 }
-
+/* endregion HOVER */
 .active
 , .selected
 , .active>a
@@ -208,7 +214,7 @@ button
 
     & * {
         opacity: 1 !important;
-        background-color: var(--bg-button) !important;
+        background-color: var(--bg-button);
         background-image: inherit !important;
         background-attachment: inherit !important;
         color: var(--col-w-100) !important;
@@ -267,8 +273,15 @@ tr:hover
 , [class*=danger]
 , [class*=warning]
 {
+    border-color: yellow !important;
     background-color: rgb(164, 0, 0) !important;
     color: yellow !important;
+
+    & * {
+        background-color: rgb(164, 0, 0) !important;
+        color: yellow !important;
+    }
+
 }
 /* endregion ERROR */
 
