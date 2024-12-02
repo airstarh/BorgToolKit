@@ -25,7 +25,7 @@
     --bg-active: none #146600;
 
     --link-bg: #7b66ff linear-gradient(180deg, #1b06a2 0%, #4e41a2 50%);
-    --link-bg-hover: rgb(0, 17, 255);
+    --link-bg-hover: rgb(35, 45, 192);
     --link-bg-visited: purple none;
 
 
@@ -73,10 +73,11 @@ html
 , #content
 , #footer
 , [class*=crayon] *
+, h1, h2, h3, h4, .wiki-content h1, .wiki-content h2, .wiki-content h3, .wiki-content h4, .pagetitle, .steptitle, .substeptitle, .formtitle, table.confluenceTable td.confluenceTd.highlight, table.confluenceTable td.confluenceTd.highlight > p, table.confluenceTable th.confluenceTh, table.confluenceTable th.confluenceTh > p, .wiki-content .tablesorter-header-inner, table.admin th, .form-element-large, .form-element-small, #toolbar #format-dropdown .format-h1 a, #toolbar #format-dropdown .format-h2 a, #toolbar #format-dropdown .format-h3 a, #toolbar #format-dropdown .format-h4 a
 {
     background-color: var(--bg-default) !important;
-    color: var(--txt-default) !important;
-    opacity: 1;
+    color: var(--txt-default);
+    /* opacity: 1; */
 
     & *::selection {
         background-color: blue !important;
@@ -98,13 +99,8 @@ html
     }
 }
 
-:after
-, :before
-{
-    /* opacity: 1 !important; */
-    /* background-color: var(--col-b-50) !important; */
-    /* color: var(--col-w-50) !important; */
-}
+
+
 /* region LINKS ANCHORS */
 a 
 {
@@ -125,9 +121,9 @@ a:not([class*=icon]):hover
     color: var(--col-w-100) !important;
 }
 
-[class*=icon]:hover
-, button:hover
+button:hover
 , .btn:hover
+, [class*=icon]:hover
 , [class*=btn]:hover
 {
     background-clip: padding-box !important;
@@ -135,28 +131,9 @@ a:not([class*=icon]):hover
     color: var(--col-w-100) !important;
 }
 /* endregion HOVER */
-.active
-, .selected
-, .active>a
-, a:active
-, a.active
-, a.selected
-, [class*=active]
-, .active-table-line
-{
-    background: var(--bg-active) !important;
-    color: var(--col-w-100) !important;
-}
 /* endregion LINKS ANCHORS */
-/* endregion GLOBAL */
-/* region CSS ADDON */
-.ucss-panel
-{
-    outline: #846593 10px solid ;
-    background-color: var(--bg-default);
-    color: var(--col-w-100) ;
-}
-/* endregion CSS ADDON */
+
+
 
 /* region FORM */
 input
@@ -215,7 +192,7 @@ button
     & * {
         opacity: 1 !important;
         background-color: var(--bg-button);
-        background-image: inherit !important;
+        /* background-image: inherit !important; */
         background-attachment: inherit !important;
         color: var(--col-w-100) !important;
     }
@@ -235,6 +212,9 @@ button
     color: var(--col-b-100) !important;
 }
 /* endregion FORM */
+
+
+
 
 /* region table */
 table
@@ -265,6 +245,26 @@ tr:hover
 }
 /* endregion table */
 
+
+
+/* region ACTIVE */
+.active
+, .selected
+, .active>a
+, a:active
+, a.active
+, a.selected
+, [class*=active]
+, .active-table-line
+, [class*=showed]
+{
+    background: var(--bg-active) !important;
+    color: var(--col-w-100) !important;
+}
+/* endregion ACTIVE */
+
+
+
 /* region ERROR */
 [class*=error]
 , [class*=Error]
@@ -284,6 +284,9 @@ tr:hover
 
 }
 /* endregion ERROR */
+/* endregion GLOBAL */
+
+
 
 /* region SPECIFIC */
 .issue
@@ -303,7 +306,19 @@ tr:hover
     margin-top: 100px;
     padding: 15px 0; 
     background-color:var(--col-b-100) !important;
-    & *:not(a, button, select, textarea) {
+    
+    /* & *:not(a):not(button):not(select):not(textarea)  */
+    & div
+    ,& p
+    ,& span
+    ,& ul
+    ,& ol
+    ,& li
+    ,& h4
+    ,& h3
+    ,& h2
+    ,& h1
+    {
         background-color:var(--col-b-100) !important;
         color: var(--col-w-0)
     }
@@ -315,3 +330,38 @@ tr:hover
     background-color: #333;
 }
 /* endregion SPECIFIC */
+
+
+
+/* region SCROLLBAR */
+::-webkit-scrollbar {
+    width: 10px; /* width of the entire scrollbar */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #555; /* color of the scroll thumb */
+    border-radius: 10px; /* roundness of the scroll thumb */
+    border: 2px solid #ccc; /* optional: add border around scroll thumb */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* color of the track */
+    border-radius: 10px; /* roundness of the track */
+  }
+  
+  /* Hover effects (optional) */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #333;
+  }
+  /* endregion SCROLLBAR */
+
+
+
+  /* region CSS ADDON */
+.ucss-panel
+{
+    outline: #846593 10px solid ;
+    background-color: var(--bg-default);
+    color: var(--col-w-100) ;
+}
+/* endregion CSS ADDON */

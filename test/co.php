@@ -1,14 +1,17 @@
 <?php
 require_once __DIR__ . '/../index.php';
 
-$a = [
-    'aaa' => [
-        'bbb' => 100,
-    ],
-];
+try {
+    throw new mysqli_sql_exception('ASAS');
+} catch (mysqli_sql_exception $exception) {
+    $msg = implode(" ", [
+        'Exception on ',
+        __METHOD__,
+        'Line:', $exception->getLine(),
+        'Message:', $exception->getMessage(),
+    ]);
 
-$res = DataHelper::setByPath('', '=',['asd' => 123,], $b);
+    echo $msg;
+}
 
-BorgDebug::dumpBeautiful($b);
-BorgDebug::dumpBeautiful($res);
 BorgDebug::dumpBeautiful(explode('/', ''));
