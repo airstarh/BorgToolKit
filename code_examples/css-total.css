@@ -57,7 +57,9 @@ html
 , fieldset
 , legend
 , p
+, p span
 , span
+, strong
 , aside
 , header
 , content
@@ -328,6 +330,18 @@ tr:hover
 , .gray-bg
 {
     background-color: #333;
+}
+
+div.innerCell
+, div.innerCell h1
+, div.innerCell h2
+, div.innerCell h3
+, div.innerCell h4
+, div.innerCell p
+, div.innerCell p span 
+, div.innerCell span
+{
+    color: var(--txt-default) !important;
 }
 /* endregion SPECIFIC */
 
