@@ -192,13 +192,30 @@ class BorgDebug
         echo json_encode($data);
     }
 
-    static public function dump($data)
+    static public function dump($data, $depth = 5)
     {
         try {
-            echo var_export($data, 1);
-        } catch (ErrorException $e) {
-            print_r($data);
+            var_export($data, 0);
+        } catch (Exception $e) {
+            static::print_limited_r($data, $depth);
         }
+    }
+
+    static public function print_limited_r($object, $depth = 5)
+    {
+        if ($depth == 0) {
+            return ''; // Stop the recursion
+        }
+
+        $output = print_r($object, true);
+
+        if (is_array($object) || is_object($object)) {
+            foreach ($object as $key => $value) {
+                $output .= static::print_limited_r($value, $depth - 1) . PHP_EOL . '<===>'. PHP_EOL;
+            }
+        }
+
+        return $output;
     }
 
     static public function checkExecution($data)
@@ -243,7 +260,6 @@ class BorgDebug
         echo '##################################################';
         echo PHP_EOL;
         echo PHP_EOL;
-
     }
 
     // endregion DEBUG

@@ -49,7 +49,7 @@ final class DataHelper
         string $path,
         string $operator,
         mixed $value,
-        ?array &$array = [],
+        ?array &$array = []
     ) {
         $el = &$array;
         if ($path !== '') {
@@ -96,7 +96,7 @@ final class DataHelper
     // region OTHER
     public static function timeDiff(
         float $timeStart,
-        ?float $timeEnd = 0,
+        ?float $timeEnd = 0
     ): float {
         if ($timeEnd === 0) {
             $timeEnd = microtime(true);
