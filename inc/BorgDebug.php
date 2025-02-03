@@ -11,6 +11,9 @@ class BorgDebug
     private static string $startMicrotime;
     private static array $flagStarted = [];
     private static array $counterCalls = [];
+    public static int $countSome1 = 0;
+    public static int $countSome2 = 0;
+    public static int $countSome3 = 0;
 
     //endregion FIELDS
     ##################################################
@@ -211,7 +214,7 @@ class BorgDebug
 
         if (is_array($object) || is_object($object)) {
             foreach ($object as $key => $value) {
-                $output .= static::print_limited_r($value, $depth - 1) . PHP_EOL . '<===>'. PHP_EOL;
+                $output .= static::print_limited_r($value, $depth - 1) . PHP_EOL . '<===>' . PHP_EOL;
             }
         }
 
@@ -373,6 +376,26 @@ class BorgDebug
 
         //throw new \Exception('Unable to convert to object');
         return (object)[];
+    }
+
+    static public function getCallStack(array $backtrace = null): array
+    {
+        if ($backtrace === null) {
+            $backtrace = debug_backtrace();
+        }
+
+        $stack = [];
+        foreach ($backtrace as $trace) {
+            $functionName = '';
+            if (isset($trace['class'])) {
+                $functionName .= $trace['class'] . $trace['type'];
+            }
+
+            $functionName .= $trace['function'];
+
+            $stack[] = $functionName;
+        }
+        return $stack;
     }
 
     // endregion UTILS/HELPERS
