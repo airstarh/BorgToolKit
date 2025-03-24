@@ -1,18 +1,16 @@
 <?php
 require_once __DIR__ . '/../index.php';
 
-$version = phpversion();
+$float = 123.456789;
+$float = 109035655.60000000;
+$res['$float'] = $float;
 
-function testCo(...$params){
-    $res = func_get_args();
-    // $res = json_encode($params);
-    // $res = hash('sha512', $res);
+$number_format = number_format($float, 4, '.', '');
+$res['$number_format'] = $number_format;
 
-    echo PHP_EOL;
-    var_export($res);
-    echo PHP_EOL;
-}
+$sprintf = sprintf('%.4f', $float);
+$res['$sprintf'] = $sprintf;
 
-$obj = new stdClass();
-$obj->prop = 'ten';
-testCo(1,2,3, [4,5,6], 'sevetn', ['eight','nine'], $obj);
+echo PHP_EOL;
+var_export($res);
+echo PHP_EOL;
