@@ -20,6 +20,9 @@ LOYALTY = {
             Object.assign(pmRequestBody, options.customRequest);
         }
 
+        console.log('XXXXXXXX');
+        console.log(pmRequestBody);
+
         // REQUEST BODY
         Object.keys(pmRequestBody).sort().forEach(PostKey => {
 
@@ -34,7 +37,6 @@ LOYALTY = {
                     break;
 
                 case 'Data':
-
 
                     for (IdUserKey in customData) {
                         customData[IdUserKey].map(event => {
@@ -54,6 +56,11 @@ LOYALTY = {
                 default:
                     let val = options?.customRequest[PostKey] || this.notDefined;
                     if (val !== this.notDefined) {
+
+                        if (val && typeof val === 'object') {
+                            val = JSON.stringify(val);
+                        }
+
                         pmRequestBody[PostKey] = val;
                         //pm.collectionVariables.set(PostKey, pmRequestBody[PostKey]);
                     }
@@ -74,9 +81,12 @@ LOYALTY = {
             ClientPWD
         );
 
+
+        pmRequestBody.Hash = hash;
         pm.collectionVariables.set('Hash', hash);
         pm.collectionVariables.set('ClientKey', ClientKey);
 
+        this.setPmRequestBodyUrlencoded(pmRequestBody);
     },
 
     // ##################################################
@@ -98,7 +108,7 @@ LOYALTY = {
     setPmRequestBodyUrlencoded: function (json) {
         const res = [];
         for (const [key, value] of Object.entries(json)) {
-            res.push({ key: key, value: JSON.stringify(value) });
+            res.push({ key: key, value: value });
         }
 
         this.pm.request.body.update({
