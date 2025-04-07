@@ -2,6 +2,9 @@
 // VARS CUSTOM
 pm.collectionVariables.set('ROUTE_CURRENT', 'Events/Bundle');
 const ROUTE_CURRENT = pm.collectionVariables.get('ROUTE_CURRENT');
+const options = {
+    ROUTE_CURRENT: ROUTE_CURRENT,
+};
 let ClientKey = '';
 let ClientPWD = '';
 const Merchant = 958;
@@ -111,16 +114,8 @@ function getCustomData() {
     return customData;
 }
 
-const customData = getCustomData();
-
-
+options.customData = getCustomData();
 
 // ##################################################
 
-const options = {
-    ROUTE_CURRENT: ROUTE_CURRENT,
-};
-
-// ##################################################
-
-LOYALTY.go(pm, request.data, customData, ClientKey, ClientPWD, options);
+LOYALTY.go(pm, request.data, ClientKey, ClientPWD, options);

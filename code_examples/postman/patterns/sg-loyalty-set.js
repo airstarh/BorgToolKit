@@ -8,7 +8,6 @@ const options = {
 let ClientKey = '';
 let ClientPWD = '';
 const Merchant = 958;
-const customData = {};
 // ##################################################
 ClientKey = mockup.Kent.ClientKey;
 ClientPWD = mockup.Kent.ClientPWD;
@@ -53,4 +52,4 @@ options.customRequest = getCustomRequest();
 
 // ##################################################
 
-LOYALTY.go(pm, request.data, customData, ClientKey, ClientPWD, options);
+LOYALTY.go(pm, request.data, ClientKey, ClientPWD, options);

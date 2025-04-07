@@ -7,7 +7,7 @@ LOYALTY = {
 
     pm: {},
 
-    go: function (pm, pmRequestBody, customData, ClientKey, ClientPWD, options = {}) {
+    go: function (pm, pmRequestBody, ClientKey, ClientPWD, options = {}) {
 
         // VARS AUTO
         this.pm = pm;
@@ -38,8 +38,8 @@ LOYALTY = {
 
                 case 'Data':
 
-                    for (IdUserKey in customData) {
-                        customData[IdUserKey].map(event => {
+                    for (IdUserKey in options.customData) {
+                        options.customData[IdUserKey].map(event => {
 
                             counter++;
 
@@ -48,7 +48,7 @@ LOYALTY = {
                         })
                     }
 
-                    pmRequestBody['Data'] = JSON.stringify(customData);
+                    pmRequestBody['Data'] = JSON.stringify(options.customData);
                     pm.collectionVariables.set('Data', pmRequestBody['Data']);
 
                     break;
