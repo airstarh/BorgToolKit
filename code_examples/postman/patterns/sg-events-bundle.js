@@ -1,17 +1,14 @@
-// const LOYALTY = require('https://borg.home/BorgToolKit/code_examples/postman/patterns/sg-collection-pre-request.js');
-
 // ##################################################
 // VARS CUSTOM
+pm.collectionVariables.set('ROUTE_CURRENT', 'Events/Bundle');
+const ROUTE_CURRENT = pm.collectionVariables.get('ROUTE_CURRENT');
 let ClientKey = '';
 let ClientPWD = '';
-let IDUser = 0;
 const Merchant = 958;
 
 // ##################################################
-// DevCasino
 ClientKey = mockup.Devcasino.ClientKey;
 ClientPWD = mockup.Devcasino.ClientPWD;
-// ###
 // ##################################################
 
 function getUserIds() {
@@ -62,7 +59,7 @@ function getEventArray(IDUser) {
             "IDUser": IDUser,
             "Event": "Win",
             "Data": {
-                "Amount": getRandomInteger(),
+                "Amount": LOYALTY.getRandomInteger(),
                 "Merchant": Merchant,
                 "Balance": "2",
                 "IDRound": "123",
@@ -74,7 +71,7 @@ function getEventArray(IDUser) {
             "Event": "Bet",
             "Data": {
                 "Amount": "100",
-                "AmountOrig": getRandomInteger(),
+                "AmountOrig": LOYALTY.getRandomInteger(),
                 "Currency": "EUR",
                 "Merchant": Merchant,
                 "Balance": "2",
@@ -86,7 +83,7 @@ function getEventArray(IDUser) {
             "IDUser": IDUser,
             "Event": "Bet",
             "Data": {
-                "Amount": getRandomInteger(),
+                "Amount": LOYALTY.getRandomInteger(),
                 "AmountOrig": "1",
                 "Currency": "EUR",
                 "Merchant": Merchant,
@@ -98,10 +95,6 @@ function getEventArray(IDUser) {
     ];
 
     return events;
-}
-
-function getRandomInteger() {
-    return Math.floor(Math.random() * 50) + 1;
 }
 
 function getCustomData() {
@@ -122,11 +115,13 @@ const customData = getCustomData();
 
 
 
-// ###
+// ##################################################
 
 const options = {
-    _url_path_key: '/Events/Bundle/'
+    ROUTE_CURRENT: ROUTE_CURRENT,
+    processEvent: true,
 };
+
 // ##################################################
 
 LOYALTY.go(pm, request.data, customData, ClientKey, ClientPWD, options);

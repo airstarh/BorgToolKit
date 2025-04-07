@@ -9,8 +9,6 @@ LOYALTY = {
 
         // VARS AUTO
         const TID = uuid.v4();
-
-        let hashString = '';
         const hashArray = [];
         let counter = 0;
 
@@ -28,14 +26,17 @@ LOYALTY = {
                     break;
 
                 case 'Data':
-                    for (IdUserKey in customData) {
-                        customData[IdUserKey].map(event => {
 
-                            counter++;
+                    if (options.processEvent) {
+                        for (IdUserKey in customData) {
+                            customData[IdUserKey].map(event => {
 
-                            event.ID = new Date().getTime() + counter;
+                                counter++;
 
-                        })
+                                event.ID = new Date().getTime() + counter;
+
+                            })
+                        }
                     }
 
                     pmRequestBody['Data'] = JSON.stringify(customData);
@@ -55,20 +56,33 @@ LOYALTY = {
             hashArray.push(`${PostKey}=${pmRequestBody[PostKey]}`);
         });
 
-        hashString = hashArray.join('/');
-        hashString = ClientKey + options._url_path_key + hashString + '/' + ClientPWD;
-        const hash = crypto.MD5(hashString).toString();
+        const hash = this.getHash(
+            ClientKey,
+            options.ROUTE_CURRENT,
+            hashArray,
+            ClientPWD
+        );
 
         pm.collectionVariables.set('Hash', hash);
         pm.collectionVariables.set('ClientKey', ClientKey);
-
-        // endregion QUERY
-        // ##################################################
 
     },
 
     // ##################################################
     // region SYSTEM
+
+    getHash: function (ClientKey, ROUTE_CURRENT, reqArray, ClientPWD) {
+        const hashArray = [
+            ClientKey,
+            ROUTE_CURRENT,
+            ...reqArray,
+            ClientPWD
+        ];
+        const hashString = hashArray.join('/');
+        const hash = crypto.MD5(hashString).toString();
+        return hash;
+
+    },
 
     pm: {},
 
@@ -94,9 +108,13 @@ LOYALTY = {
     },
 
     // eend region SYSTEM
+    // ##################################################
+    // region URILS
+
+    getRandomInteger: function () {
+        return Math.floor(Math.random() * 50) + 1;
+    },
+
+    // endregion URILS
+    // ##################################################
 };
-
-
-// module.exports = {
-//     LOYALTY: LOYALTY,
-// };
