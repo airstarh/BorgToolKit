@@ -68,9 +68,32 @@ LOYALTY = {
 
     },
 
+    // ##################################################
+    // region SYSTEM
+
+    pm: {},
+
+    request: {},
+
+    _pm: function (pm) {
+        if (typeof pm !== 'undefined') {
+            this.pm = pm;
+        }
+
+        return this.pm;
+    },
+
+    setPmRequest: function (obj) {
+        for (const [key, value] of Object.entries(obj)) {
+            this.pm.request.set();
+        }
+    },
+
     getBodyEnabledKeys: function () {
         const enabledParams = pm.request.body.urlencoded.filter(el => !el.disabled);
-        const objBody = {};
+        return enabledParams;
     },
+
+    // eend region SYSTEM
 };
 
