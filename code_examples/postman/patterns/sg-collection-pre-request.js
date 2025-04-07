@@ -5,7 +5,7 @@ LOYALTY = {
 
     notDefined: 'NOT_DEFINED_AT_ALL',
 
-    go: function (pm, refBody, customData, ClientKey, ClientPWD, options = {}) {
+    go: function (pm, pmRequestBody, customData, ClientKey, ClientPWD, options = {}) {
 
         // VARS AUTO
         const TID = uuid.v4();
@@ -15,7 +15,7 @@ LOYALTY = {
         let counter = 0;
 
         // REQUEST BODY
-        Object.keys(refBody).sort().forEach(PostKey => {
+        Object.keys(pmRequestBody).sort().forEach(PostKey => {
 
             switch (PostKey) {
                 case 'Hash':
@@ -23,7 +23,7 @@ LOYALTY = {
                     break;
 
                 case 'TID':
-                    refBody['TID'] = TID;
+                    pmRequestBody['TID'] = TID;
                     pm.collectionVariables.set('TID', TID);
                     break;
 
@@ -38,21 +38,21 @@ LOYALTY = {
                         })
                     }
 
-                    refBody['Data'] = JSON.stringify(customData);
-                    pm.collectionVariables.set('Data', refBody['Data']);
+                    pmRequestBody['Data'] = JSON.stringify(customData);
+                    pm.collectionVariables.set('Data', pmRequestBody['Data']);
 
                     break;
 
                 default:
                     let val = options[PostKey] || this.notDefined;
                     if (val !== this.notDefined) {
-                        refBody[PostKey] = val;
-                        //pm.collectionVariables.set(PostKey, refBody[PostKey]);
+                        pmRequestBody[PostKey] = val;
+                        //pm.collectionVariables.set(PostKey, pmRequestBody[PostKey]);
                     }
                     break;
             }
 
-            hashArray.push(`${PostKey}=${refBody[PostKey]}`);
+            hashArray.push(`${PostKey}=${pmRequestBody[PostKey]}`);
         });
 
         hashString = hashArray.join('/');
