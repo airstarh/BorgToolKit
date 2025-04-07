@@ -119,7 +119,6 @@ const customData = getCustomData();
 
 const options = {
     ROUTE_CURRENT: ROUTE_CURRENT,
-    processEvent: true,
 };
 
 // ##################################################

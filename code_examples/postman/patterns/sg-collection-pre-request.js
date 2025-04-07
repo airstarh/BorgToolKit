@@ -5,12 +5,20 @@ LOYALTY = {
 
     notDefined: 'NOT_DEFINED_AT_ALL',
 
+    pm: {},
+
     go: function (pm, pmRequestBody, customData, ClientKey, ClientPWD, options = {}) {
 
         // VARS AUTO
+        this.pm = pm;
         const TID = uuid.v4();
         const hashArray = [];
         let counter = 0;
+
+        // ~...
+        if (options.customRequest) {
+            Object.assign(pmRequestBody, options.customRequest);
+        }
 
         // REQUEST BODY
         Object.keys(pmRequestBody).sort().forEach(PostKey => {
@@ -27,16 +35,15 @@ LOYALTY = {
 
                 case 'Data':
 
-                    if (options.processEvent) {
-                        for (IdUserKey in customData) {
-                            customData[IdUserKey].map(event => {
 
-                                counter++;
+                    for (IdUserKey in customData) {
+                        customData[IdUserKey].map(event => {
 
-                                event.ID = new Date().getTime() + counter;
+                            counter++;
 
-                            })
-                        }
+                            event.ID = new Date().getTime() + counter;
+
+                        })
                     }
 
                     pmRequestBody['Data'] = JSON.stringify(customData);
@@ -45,7 +52,7 @@ LOYALTY = {
                     break;
 
                 default:
-                    let val = options[PostKey] || this.notDefined;
+                    let val = options?.customRequest[PostKey] || this.notDefined;
                     if (val !== this.notDefined) {
                         pmRequestBody[PostKey] = val;
                         //pm.collectionVariables.set(PostKey, pmRequestBody[PostKey]);
@@ -53,7 +60,11 @@ LOYALTY = {
                     break;
             }
 
-            hashArray.push(`${PostKey}=${pmRequestBody[PostKey]}`);
+            const PostValue = pmRequestBody[PostKey];
+            hashArray.push(`${PostKey}=${PostValue}`);
+
+            // const PostValue = JSON.stringify(pmRequestBody[PostKey]);
+            // hashArray.push(`${PostKey}=${PostValue}`);
         });
 
         const hash = this.getHash(
@@ -84,26 +95,22 @@ LOYALTY = {
 
     },
 
-    pm: {},
-
-    request: {},
-
-    _pm: function (pm) {
-        if (typeof pm !== 'undefined') {
-            this.pm = pm;
+    setPmRequestBodyUrlencoded: function (json) {
+        const res = [];
+        for (const [key, value] of Object.entries(json)) {
+            res.push({ key: key, value: JSON.stringify(value) });
         }
 
-        return this.pm;
-    },
+        this.pm.request.body.update({
+            mode: "urlencoded",
+            urlencoded: res
+        });
 
-    setPmRequest: function (obj) {
-        for (const [key, value] of Object.entries(obj)) {
-            this.pm.request.set();
-        }
+        return this.pm.request.body;
     },
 
     getBodyEnabledKeys: function () {
-        const enabledParams = pm.request.body.urlencoded.filter(el => !el.disabled);
+        const enabledParams = this.pm.request.body.urlencoded.filter(el => !el.disabled);
         return enabledParams;
     },
 

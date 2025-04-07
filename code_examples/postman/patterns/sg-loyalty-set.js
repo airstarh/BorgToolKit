@@ -1,126 +1,55 @@
 // ##################################################
 // VARS CUSTOM
-pm.collectionVariables.set('ROUTE_CURRENT', 'Events/Bundle');
+pm.collectionVariables.set('ROUTE_CURRENT', 'Loyalty/Set');
 const ROUTE_CURRENT = pm.collectionVariables.get('ROUTE_CURRENT');
+const options = {
+    ROUTE_CURRENT: ROUTE_CURRENT,
+};
 let ClientKey = '';
 let ClientPWD = '';
 const Merchant = 958;
-
+const customData = {};
 // ##################################################
-ClientKey = mockup.Devcasino.ClientKey;
-ClientPWD = mockup.Devcasino.ClientPWD;
-// ##################################################
-
-function getUserIds() {
-    const userIds = [
-        279394074,
-        279394173,
-        279394199,
-        // 279425387,
-        // 279425388,
-        // 279428177,
-        // 279428549,
-        // 279430676,
-        // 279430718,
-        // 279430744,
-        // 279430779,
-        // 279433061,
-        // 279433092,
-        // 279433126,
-        // 279433145,
-        // 279433895,
-        // 279433903,
-        // 279433921,
-        // 279433951,
-        // 279433962,
-        // 279434032,
-        // 279434100,
-        // 279434174,
-        // 279434216,
-        // 279434289,
-        // 279434363,
-        // 279434406,
-        // 279434477,
-        // 279434553,
-        // 279434581,
-        // 279434609,
-        // 279434651,
-        // 279434692,
-        // 279434707,
-        // 279434754,
-    ];
-
-    return userIds;
-}
-
-function getEventArray(IDUser) {
-    const events = [
-        {
-            "IDUser": IDUser,
-            "Event": "Win",
-            "Data": {
-                "Amount": LOYALTY.getRandomInteger(),
-                "Merchant": Merchant,
-                "Balance": "2",
-                "IDRound": "123",
-                "BonusActionData": { "action_data": [] }
-            }
-        },
-        {
-            "IDUser": IDUser,
-            "Event": "Bet",
-            "Data": {
-                "Amount": "100",
-                "AmountOrig": LOYALTY.getRandomInteger(),
-                "Currency": "EUR",
-                "Merchant": Merchant,
-                "Balance": "2",
-                "IDRound": "123",
-                "BonusActionData": { "action_data": [] }
-            }
-        },
-        {
-            "IDUser": IDUser,
-            "Event": "Bet",
-            "Data": {
-                "Amount": LOYALTY.getRandomInteger(),
-                "AmountOrig": "1",
-                "Currency": "EUR",
-                "Merchant": Merchant,
-                "Balance": "2",
-                "IDRound": "123",
-                "BonusActionData": { "action_data": [] }
-            }
-        },
-    ];
-
-    return events;
-}
-
-function getCustomData() {
-
-    const customData = {};
-    const userIds = getUserIds();
-
-    for (let i = 0; i < userIds.length; i++) {
-        const IDUser = userIds[i];
-        const eventArray = getEventArray(IDUser);
-        customData[IDUser] = eventArray;
-    }
-
-    return customData;
-}
-
-const customData = getCustomData();
-
-
-
+ClientKey = mockup.Kent.ClientKey;
+ClientPWD = mockup.Kent.ClientPWD;
 // ##################################################
 
-const options = {
-    ROUTE_CURRENT: ROUTE_CURRENT,
-    processEvent: true,
-};
+function getCustomRequest() {
+
+    return {
+        "TID": "FUNDIST",
+        "Audit": {
+            "User": { "ID": "277843658", "IP": "91.202.25.124", "Login": "vazovsky" }
+        },
+        "IDUser": "279814915",
+        "Level": "2",
+        "Points": "12.0000",
+        "NextLevelPoints": "100",
+        "BonusRestrictions": {
+            "RestrictCasinoBonuses": {
+                "State": 1,
+                "IDUser": 277843658,
+                "Time": "2025-04-07 13:49:49"
+            },
+            "RestrictSportBonuses": {
+                "State": 1,
+                "IDUser": 277843658,
+                "Time": "2025-04-07 13:49:49"
+            },
+            "RestrictPokerBonuses": {
+                "State": 0,
+                "IDUser": 277843658,
+                "Time": "2025-04-07 13:49:49"
+            }
+        },
+        // "Hash": "ede5e38512d3278786550984e0e4a29c",
+        "req_uniq_id": "site2-deac-qa-1:1508339:1744033789.986:46fb9c1dff9efc467dc533119fb96999"
+    };
+}
+
+options.customRequest = getCustomRequest();
+
+// ##################################################
 
 // ##################################################
 
