@@ -13,15 +13,11 @@ LOYALTY = {
         this.pm = pm;
         const TID = uuid.v4();
         const hashArray = [];
-        let counter = 0;
 
         // ~...
         if (options.customRequest) {
             Object.assign(pmRequestBody, options.customRequest);
         }
-
-        console.log('XXXXXXXX');
-        console.log(pmRequestBody);
 
         // REQUEST BODY
         Object.keys(pmRequestBody).sort().forEach(PostKey => {
@@ -34,23 +30,6 @@ LOYALTY = {
                 case 'TID':
                     pmRequestBody['TID'] = TID;
                     pm.collectionVariables.set('TID', TID);
-                    break;
-
-                case 'Data':
-
-                    for (IdUserKey in options.customData) {
-                        options.customData[IdUserKey].map(event => {
-
-                            counter++;
-
-                            event.ID = new Date().getTime() + counter;
-
-                        })
-                    }
-
-                    pmRequestBody['Data'] = JSON.stringify(options.customData);
-                    pm.collectionVariables.set('Data', pmRequestBody['Data']);
-
                     break;
 
                 default:
@@ -70,8 +49,6 @@ LOYALTY = {
             const PostValue = pmRequestBody[PostKey];
             hashArray.push(`${PostKey}=${PostValue}`);
 
-            // const PostValue = JSON.stringify(pmRequestBody[PostKey]);
-            // hashArray.push(`${PostKey}=${PostValue}`);
         });
 
         const hash = this.getHash(
@@ -81,11 +58,11 @@ LOYALTY = {
             ClientPWD
         );
 
-
         pmRequestBody.Hash = hash;
         pm.collectionVariables.set('Hash', hash);
         pm.collectionVariables.set('ClientKey', ClientKey);
 
+        //TODO: Make for various types of Body.
         this.setPmRequestBodyUrlencoded(pmRequestBody);
     },
 

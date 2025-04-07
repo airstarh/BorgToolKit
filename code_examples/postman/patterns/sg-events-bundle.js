@@ -114,8 +114,20 @@ function getCustomData() {
     return customData;
 }
 
-options.customData = getCustomData();
+options.customRequest = {};
+options.customRequest.Data = getCustomData();
 
+// ##################################################
+let counter = 0;
+for (IdUserKey in options.customRequest.Data) {
+    options.customRequest.Data[IdUserKey].map(event => {
+
+        counter++;
+
+        event.ID = new Date().getTime() + counter;
+
+    })
+}
 // ##################################################
 
 LOYALTY.go(pm, request.data, ClientKey, ClientPWD, options);
