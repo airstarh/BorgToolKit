@@ -1,7 +1,8 @@
+
 const uuid = require('uuid');
 const crypto = require('crypto-js')
 
-hereWe = {
+LOYALTY = {
 
     notDefined: 'NOT_DEFINED_AT_ALL',
 
@@ -44,8 +45,8 @@ hereWe = {
                     break;
 
                 default:
-                    let val = options[PostKey] || hereWe.notDefined;
-                    if (val !== hereWe.notDefined) {
+                    let val = options[PostKey] || LOYALTY.notDefined;
+                    if (val !== LOYALTY.notDefined) {
                         refBody[PostKey] = val;
                         pm.collectionVariables.set(PostKey, refBody[PostKey]);
                     }
@@ -58,9 +59,9 @@ hereWe = {
         hashString = hashArray.join('/');
         hashString = ClientKey + options._url_path_key + hashString + '/' + ClientPWD;
         const hash = crypto.MD5(hashString).toString();
+
         pm.collectionVariables.set('Hash', hash);
         pm.collectionVariables.set('ClientKey', ClientKey);
-
 
         // endregion QUERY
         // ##################################################
