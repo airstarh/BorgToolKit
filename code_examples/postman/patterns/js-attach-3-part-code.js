@@ -1,28 +1,29 @@
-let script = '';
+let script = [];
 const files = [
     'http://borg.home/BorgToolKit/code_examples/postman/patterns/sg-collection-pre-request.js',
+    'http://borg.home/BorgToolKit/code_examples/postman/patterns/mockup.js',
     'http://borg.home/BorgToolKit/code_examples/postman/patterns/sg-event-bundle.js',
 ];
 
-function sewaPromises(f) {
+function sewaPromises(f, order) {
     return new Promise((resolve, reject) => {
         pm.sendRequest(f, (err, res) => {
             if (err) {
                 console.log(err);
                 reject();
             } else {
-                script += res.text();
+                script[order] = res.text();
                 resolve();
             }
         });
     });
 }
 
-const promises = files.map(el => sewaPromises(el));
+const promises = files.map((el, order) => sewaPromises(el, order));
 
 Promise.all(promises)
     .then(results => {
-        eval(script);
+        eval(script.join('\n'));
     })
     .catch(error => {
         console.error('Error fetching data:', error);

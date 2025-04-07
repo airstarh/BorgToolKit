@@ -1,6 +1,5 @@
 // const LOYALTY = require('https://borg.home/BorgToolKit/code_examples/postman/patterns/sg-collection-pre-request.js');
 
-
 // ##################################################
 // VARS CUSTOM
 let ClientKey = '';
@@ -10,8 +9,8 @@ const Merchant = 958;
 
 // ##################################################
 // DevCasino
-ClientKey = '0d8f8cb8c23b1fdd962eb62d79359b47';
-ClientPWD = '2046045182213637';
+ClientKey = mockup.Devcasino.ClientKey;
+ClientPWD = mockup.Devcasino.ClientPWD;
 // ###
 // ##################################################
 
@@ -130,10 +129,4 @@ const options = {
 };
 // ##################################################
 
-//const refBody = pm.request.body.toJSON();
-const refBody = request.data;
-// console.log('XXXXXXXX');
-// console.log(refBody);
-// console.log(pm.request.body);
-
-LOYALTY.go(pm, refBody, customData, ClientKey, ClientPWD, options);
+LOYALTY.go(pm, request.data, customData, ClientKey, ClientPWD, options);
