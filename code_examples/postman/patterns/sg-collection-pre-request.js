@@ -1,6 +1,5 @@
-
 const uuid = require('uuid');
-const crypto = require('crypto-js')
+const crypto = require('crypto-js');
 
 LOYALTY = {
 
@@ -45,8 +44,8 @@ LOYALTY = {
                     break;
 
                 default:
-                    let val = options[PostKey] || LOYALTY.notDefined;
-                    if (val !== LOYALTY.notDefined) {
+                    let val = options[PostKey] || this.notDefined;
+                    if (val !== this.notDefined) {
                         refBody[PostKey] = val;
                         pm.collectionVariables.set(PostKey, refBody[PostKey]);
                     }

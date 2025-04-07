@@ -132,8 +132,8 @@ const options = {
 
 //const refBody = pm.request.body.toJSON();
 const refBody = request.data;
-console.log('XXXXXXXX');
-console.log(refBody);
-console.log(pm.request.body);
+// console.log('XXXXXXXX');
+// console.log(refBody);
+// console.log(pm.request.body);
 
 LOYALTY.go(pm, refBody, customData, ClientKey, ClientPWD, options);
