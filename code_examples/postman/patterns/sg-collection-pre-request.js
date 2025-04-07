@@ -47,12 +47,12 @@ LOYALTY = {
                     let val = options[PostKey] || this.notDefined;
                     if (val !== this.notDefined) {
                         refBody[PostKey] = val;
-                        pm.collectionVariables.set(PostKey, refBody[PostKey]);
+                        //pm.collectionVariables.set(PostKey, refBody[PostKey]);
                     }
                     break;
             }
 
-            hashArray.push(PostKey + '=' + refBody[PostKey]);
+            hashArray.push(`${PostKey}=${refBody[PostKey]}`);
         });
 
         hashString = hashArray.join('/');
