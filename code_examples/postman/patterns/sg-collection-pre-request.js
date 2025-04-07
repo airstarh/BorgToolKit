@@ -98,6 +98,6 @@ LOYALTY = {
 };
 
 
-module.exports = {
-    LOYALTY: LOYALTY,
-};
+// module.exports = {
+//     LOYALTY: LOYALTY,
+// };
