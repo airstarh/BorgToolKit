@@ -97,3 +97,7 @@ LOYALTY = {
     // eend region SYSTEM
 };
 
+
+module.exports = {
+    LOYALTY: LOYALTY,
+};

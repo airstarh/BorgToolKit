@@ -1,6 +1,3 @@
-const LOYALTY = require('https://borg.home/BorgToolKit/code_examples/postman/patterns/sg-collection-pre-request.js');
-
-
 // ##################################################
 // VARS CUSTOM
 let ClientKey = '';
