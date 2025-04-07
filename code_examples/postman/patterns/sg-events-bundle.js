@@ -8,6 +8,7 @@ const options = {
 let ClientKey = '';
 let ClientPWD = '';
 const Merchant = 958;
+let counter = 0;
 
 // ##################################################
 ClientKey = mockup.Devcasino.ClientKey;
@@ -59,6 +60,7 @@ function getUserIds() {
 function getEventArray(IDUser) {
     const events = [
         {
+            "ID": LOYALTY.getEventId(++counter),
             "IDUser": IDUser,
             "Event": "Win",
             "Data": {
@@ -70,6 +72,7 @@ function getEventArray(IDUser) {
             }
         },
         {
+            "ID": LOYALTY.getEventId(++counter),
             "IDUser": IDUser,
             "Event": "Bet",
             "Data": {
@@ -83,6 +86,7 @@ function getEventArray(IDUser) {
             }
         },
         {
+            "ID": LOYALTY.getEventId(++counter),
             "IDUser": IDUser,
             "Event": "Bet",
             "Data": {
@@ -117,17 +121,6 @@ function getCustomData() {
 options.customRequest = {};
 options.customRequest.Data = getCustomData();
 
-// ##################################################
-let counter = 0;
-for (IdUserKey in options.customRequest.Data) {
-    options.customRequest.Data[IdUserKey].map(event => {
-
-        counter++;
-
-        event.ID = new Date().getTime() + counter;
-
-    })
-}
 // ##################################################
 
 LOYALTY.go(pm, request.data, ClientKey, ClientPWD, options);

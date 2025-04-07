@@ -109,6 +109,10 @@ LOYALTY = {
         return Math.floor(Math.random() * 50) + 1;
     },
 
+    getEventId: function (counter) {
+        return new Date().getTime() + counter;
+    },
+
     // endregion URILS
     // ##################################################
 };
