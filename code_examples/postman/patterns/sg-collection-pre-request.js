@@ -115,4 +115,105 @@ LOYALTY = {
 
     // endregion URILS
     // ##################################################
+    // region IN TEST
+
+    /*
+    * AI Edition
+    +
+    */
+    convertPmRequestToFlatJson: function () {
+        let bodyData;
+
+        if (pm.request.body) { // Check if a body exists
+
+            const bodyMode = pm.request.body.mode;
+
+            switch (bodyMode) {
+                case 'raw':
+                    try {
+                        bodyData = JSON.parse(pm.request.body.raw); // Try parsing as JSON
+                        // Now you can iterate through the object properties:
+                        if (typeof bodyData === 'object' && bodyData !== null) { // Check it's a valid object
+                            for (const key in bodyData) {
+                                if (bodyData.hasOwnProperty(key)) {
+                                    const value = bodyData[key];
+                                    console.log(`Raw (JSON) - Key: ${key}, Value: ${value}`);
+                                    // Do something with key and value, e.g., set an environment variable:
+                                    pm.environment.set(`body_${key}`, value);
+                                }
+                            }
+                        } else {
+                            console.log("Raw body is not a JSON object.");
+                            console.log("Raw body is: ", pm.request.body.raw); // Print the raw body
+                        }
+
+                    } catch (e) {
+                        console.log("Raw body is not valid JSON.  Processing as plain text.");
+                        console.log("Raw body is: ", pm.request.body.raw); // Print the raw body
+                        // Handle raw body as plain text if JSON parsing fails.
+                        // Example:  Set a variable with the entire raw body content
+                        pm.environment.set("rawBodyContent", pm.request.body.raw);
+                    }
+                    break;
+
+                case 'formdata':
+                    bodyData = pm.request.body.formdata;
+                    // Iterate through the formdata entries:
+                    bodyData.each(function (item) {
+                        console.log(`Formdata - Key: ${item.key}, Value: ${item.value}`);
+
+                        // Handle multiple values for the same key (common for file uploads)
+                        if (Array.isArray(item.value)) {
+                            item.value.forEach((val, index) => {
+                                console.log(`  Value ${index}: ${val}`);
+                                pm.environment.set(`formdata_${item.key}_${index}`, val);
+                            });
+                        } else {
+                            pm.environment.set(`formdata_${item.key}`, item.value);
+                        }
+
+                    });
+                    break;
+
+                case 'urlencoded':
+                    bodyData = pm.request.body.urlencoded;
+                    // Iterate through the urlencoded entries:
+                    bodyData.each(function (item) {
+                        console.log(`Urlencoded - Key: ${item.key}, Value: ${item.value}`);
+                        pm.environment.set(`urlencoded_${item.key}`, item.value);
+                    });
+                    break;
+
+                case 'graphql':
+                    try {
+                        bodyData = JSON.parse(pm.request.body.graphql.variables); // Access variables
+                        // Iterate through the variables object
+                        if (typeof bodyData === 'object' && bodyData !== null) {
+                            for (const key in bodyData) {
+                                if (bodyData.hasOwnProperty(key)) {
+                                    const value = bodyData[key];
+                                    console.log(`GraphQL Variables - Key: ${key}, Value: ${value}`);
+                                    pm.environment.set(`graphql_var_${key}`, value);
+                                }
+                            }
+                        }
+
+                        const query = pm.request.body.graphql.query; // Access the GraphQL query
+                        console.log("GraphQL Query:", query);
+                        pm.environment.set("graphql_query", query);
+
+                    } catch (e) {
+                        console.error("Error parsing GraphQL variables:", e);
+                    }
+                    break;
+
+                default:
+                    console.log("Unknown body mode:", bodyMode);
+            }
+        } else {
+            console.log("No request body found.");
+        }
+    }
+    // endregion IN TEST
+    // ##################################################
 };
