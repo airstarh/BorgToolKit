@@ -150,9 +150,10 @@ class BorgDebug
             $memory = static::getMemoryUsed();
             $prefix = implode(' | ', [
                 '#######',
-                $date,
-                $ip,
+                // $date,
+                $_SERVER['REQUEST_URI'] ?? '~URI',
                 $method,
+                // $ip,
                 $memory,
             ]);
             file_put_contents($fPath, PHP_EOL, FILE_APPEND);
