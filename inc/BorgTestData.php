@@ -42,7 +42,6 @@ class BorgTestData
             ++$counter;
         }
         return implode('', $res);
-
     }
 
     static public function randStringLength($min = 1, $max = 33)
