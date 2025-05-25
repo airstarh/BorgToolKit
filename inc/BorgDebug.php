@@ -388,11 +388,9 @@ class BorgDebug
         $stack = [];
         foreach ($backtrace as $trace) {
             $functionName = '';
-            if (isset($trace['class'])) {
-                $functionName .= $trace['class'] . $trace['type'];
-            }
-
-            $functionName .= $trace['function'];
+            $functionName .= $trace['class'] ?? '';
+            $functionName .= $trace['type'] ?? '';
+            $functionName .= $trace['function'] ?? '';
 
             $stack[] = $functionName;
         }
