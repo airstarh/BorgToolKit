@@ -1,0 +1,25 @@
+<!DOCTYPE>
+<html lang="us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script>
+
+window.addEventListener('message', function(event) {
+	let data=event.data;
+	let cons = document.getElementById('Cons'); // поиск, поскольку загрузка не завершена
+	cons.innerHTML += data;
+});
+
+function main()
+{
+}
+
+</script>
+</head>
+
+<body onload='main();'>
+<div id='Cons'></div>
+<iframe src="ifr.html"></frame>
+
+</body>
+</html>
