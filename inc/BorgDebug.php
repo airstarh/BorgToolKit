@@ -394,6 +394,8 @@ class BorgDebug
 
             $stack[] = $functionName;
         }
+        $stack['$_GET'] = $_GET;
+        $stack['$_POST'] = $_POST;
         return $stack;
     }
 
