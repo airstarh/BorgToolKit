@@ -21,7 +21,8 @@ class BorgDebug
 
     static private function initMicrotime()
     {
-        if (static::$startMicrotime) return static::$startMicrotime;
+        if (static::$startMicrotime)
+            return static::$startMicrotime;
         static::$startMicrotime = $_SERVER['REQUEST_TIME_FLOAT'] ?? microtime(TRUE);
         return static::$startMicrotime;
     }
@@ -61,7 +62,7 @@ class BorgDebug
 
         ###############################
         # region FLAGS, COUNTERs, etc.
-        static::$flagStarted[$fPath]  = static::$flagStarted[$fPath] ?? false;
+        static::$flagStarted[$fPath] = static::$flagStarted[$fPath] ?? false;
         static::$counterCalls[$fPath] = isset(static::$counterCalls[$fPath])
             ? ++static::$counterCalls[$fPath]
             : 1;
@@ -133,42 +134,41 @@ class BorgDebug
 
         # endregion CLARIFY TEMPLATE
         ###############################
-        # region CLEAN IF NOT_LOG AND THE FIRST EXECUTION
+        # region PREFIX
 
         if (static::$flagStarted[$fPath] === false) {
             static::$flagStarted[$fPath] = true;
-            
+
             // WIPE LOG FILE
             if ($isLog === false) {
                 file_put_contents($fPath, PHP_EOL, 0);
             }
-            
-            $method = static::getReqMethod();
-            $ip = static::getUserIp();
-            $from = $_SERVER['HTTP_REFERER'] ?? $ip;
-            
-            $prefix = [
-                '#######',
-                $method,
-                "FROM: $from",
-                $_SERVER['SERVER_NAME'] ?? '~HOST',
-                $_SERVER['REQUEST_URI'] ?? '~URI',
-                '$_GET:',
-                json_encode($_GET),
-                '$_POST:',
-                json_encode($_POST),
-            ];
+
+            if ($isLog) {
+
+                $method = static::getReqMethod();
+                $ip = static::getUserIp();
+                $from = $_SERVER['HTTP_REFERER'] ?? $ip;
+
+                $prefix = [
+                    'LOG STARTED ##########################################################################################',
+                    $method,
+                    "FROM: $from",
+                    'SERVER_NAME:' . $_SERVER['SERVER_NAME'] ?? '~HOST',
+                    'REQUEST_URI:' . $_SERVER['REQUEST_URI'] ?? '~URI',
+                    '$_GET:',
+                    json_encode($_GET),
+                    '$_POST:',
+                    json_encode($_POST),
+                ];
+            }
         }
 
-        # endregion CLEAN IF NOT_LOG AND THE FIRST EXECUTION
-        ###############################
-        # region PREPEND LOG DATA: memory, UP, etc.
-
         if ($isLog) {
-            
+
             $date = static::getNow();
-            $memory = static::getMemoryUsed();
-            
+            $memory = static::getMemoryUsed() . ' bytes';
+
             $prefix = array_merge($prefix, [
                 "MEM: $memory",
                 "AT $date",
@@ -180,8 +180,7 @@ class BorgDebug
             file_put_contents($fPath, PHP_EOL, FILE_APPEND);
             file_put_contents($fPath, $prefix, FILE_APPEND);
         }
-
-        # endregion PREPEND LOG DATA: memory, UP, etc.
+        # endregion PREFIX
         ###############################
         # region LOG
 
@@ -335,7 +334,7 @@ class BorgDebug
 
     static public function getMemoryUsed()
     {
-        return number_format(memory_get_usage(), 10, '.', ' ');
+        return number_format(memory_get_usage(), 0, '.', ' ');
     }
 
     static public function template($fileFullPath, $data = NULL)
@@ -365,10 +364,10 @@ class BorgDebug
     static public function isStringValidJson($string, &$strJsonDecoded = null)
     {
         try {
-            $strJsonDecoded = json_decode((string)$string, false, 512);
+            $strJsonDecoded = json_decode((string) $string, false, 512);
             return (json_last_error() === JSON_ERROR_NONE);
         } // Executed only in PHP 7, will not match in PHP 5
-        catch (\Throwable  $exception) {
+        catch (\Throwable $exception) {
             return false;
         } // Executed only in PHP 5, will not be reached in PHP 7
         catch (\Exception $exception) {
@@ -396,7 +395,7 @@ class BorgDebug
         }
 
         //throw new \Exception('Unable to convert to object');
-        return (object)[];
+        return (object) [];
     }
 
     static public function getCallStack(array $backtrace = null): array
