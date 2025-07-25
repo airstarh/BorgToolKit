@@ -57,6 +57,7 @@ class BorgDebug
     static public function fDebug($data, $isLog = false, $fPath = null, string $transform = null): void
     {
         $fPath = static::initLogFilePath($fPath, $transform);
+        $prefix = [];
 
         ###############################
         # region FLAGS, COUNTERs, etc.
@@ -80,7 +81,7 @@ class BorgDebug
                 echo PHP_EOL;
                 echo '<?php';
                 echo PHP_EOL;
-                echo sprintf('$callCounter%s = ', static::$counterCalls[$fPath]);
+                echo sprintf('$XXX_%s = ', static::$counterCalls[$fPath]);
                 echo PHP_EOL;
 
                 static::dump($output);
@@ -134,9 +135,29 @@ class BorgDebug
         ###############################
         # region CLEAN IF NOT_LOG AND THE FIRST EXECUTION
 
-        if (static::$flagStarted[$fPath] === false && $isLog === false) {
-            file_put_contents($fPath, PHP_EOL, 0);
+        if (static::$flagStarted[$fPath] === false) {
             static::$flagStarted[$fPath] = true;
+            
+            // WIPE LOG FILE
+            if ($isLog === false) {
+                file_put_contents($fPath, PHP_EOL, 0);
+            }
+            
+            $method = static::getReqMethod();
+            $ip = static::getUserIp();
+            $from = $_SERVER['HTTP_REFERER'] ?? $ip;
+            
+            $prefix = [
+                '#######',
+                $method,
+                "FROM: $from",
+                $_SERVER['SERVER_NAME'] ?? '~HOST',
+                $_SERVER['REQUEST_URI'] ?? '~URI',
+                '$_GET:',
+                json_encode($_GET),
+                '$_POST:',
+                json_encode($_POST),
+            ];
         }
 
         # endregion CLEAN IF NOT_LOG AND THE FIRST EXECUTION
@@ -144,18 +165,17 @@ class BorgDebug
         # region PREPEND LOG DATA: memory, UP, etc.
 
         if ($isLog) {
-            $date   = static::getNow();
-            $ip     = static::getUserIp();
-            $method = static::getReqMethod();
+            
+            $date = static::getNow();
             $memory = static::getMemoryUsed();
-            $prefix = implode(' | ', [
-                '#######',
-                // $date,
-                $_SERVER['REQUEST_URI'] ?? '~URI',
-                $method,
-                // $ip,
-                $memory,
+            
+            $prefix = array_merge($prefix, [
+                "MEM: $memory",
+                "AT $date",
             ]);
+
+            $prefix = implode(PHP_EOL . '#> ', $prefix);
+
             file_put_contents($fPath, PHP_EOL, FILE_APPEND);
             file_put_contents($fPath, PHP_EOL, FILE_APPEND);
             file_put_contents($fPath, $prefix, FILE_APPEND);
