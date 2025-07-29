@@ -18,8 +18,8 @@ ClientPWD = mockup.Devcasino.ClientPWD;
 function getUserIds() {
     const userIds = [
         279394074,
-        279394173,
-        279394199,
+        // 279394173,
+        // 279394199,
         // 279425387,
         // 279425388,
         // 279428177,

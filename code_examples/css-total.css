@@ -76,6 +76,7 @@ html
 , #footer
 , [class*=crayon] *
 , h1, h2, h3, h4, .wiki-content h1, .wiki-content h2, .wiki-content h3, .wiki-content h4, .pagetitle, .steptitle, .substeptitle, .formtitle, table.confluenceTable td.confluenceTd.highlight, table.confluenceTable td.confluenceTd.highlight > p, table.confluenceTable th.confluenceTh, table.confluenceTable th.confluenceTh > p, .wiki-content .tablesorter-header-inner, table.admin th, .form-element-large, .form-element-small, #toolbar #format-dropdown .format-h1 a, #toolbar #format-dropdown .format-h2 a, #toolbar #format-dropdown .format-h3 a, #toolbar #format-dropdown .format-h4 a
+, :after, :before
 {
     background-color: var(--bg-default) !important;
     color: var(--txt-default);
@@ -273,6 +274,7 @@ tr:hover
 , [class*=not-valid]
 , [class*=invalid]
 , [class*=danger]
+, [class*=danger] span
 , [class*=warning]
 {
     border-color: yellow !important;
