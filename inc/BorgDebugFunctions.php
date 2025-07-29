@@ -49,10 +49,6 @@ if (!function_exists('plog')) {
     function plog($data, $doTrace = true)
     {
         BorgDebug::fDebug($data, true, null, 'php');
-        
-        if ($doTrace) {
-            BorgDebug::fDebug(BorgDebug::getCallStack(debug_backtrace()), true, null, 'php');
-        }
     }
 }
 

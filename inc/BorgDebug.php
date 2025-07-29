@@ -189,6 +189,16 @@ class BorgDebug
 
         # endregion LOG
         ###############################
+        # region BactTrace
+        $trace = static::getCallStack();
+        $trace = var_export($trace, 1);
+        
+        file_put_contents($fPath, PHP_EOL . PHP_EOL, FILE_APPEND);
+        file_put_contents($fPath, $trace, FILE_APPEND);
+        file_put_contents($fPath, PHP_EOL . PHP_EOL, FILE_APPEND);
+
+        # endregion BactTrace
+        ###############################
     }
 
     static public function dDebug($data)
@@ -413,8 +423,8 @@ class BorgDebug
 
             $stack[] = $functionName;
         }
-        $stack['$_GET'] = $_GET;
-        $stack['$_POST'] = $_POST;
+        // $stack['$_GET'] = $_GET;
+        // $stack['$_POST'] = $_POST;
         return $stack;
     }
 
