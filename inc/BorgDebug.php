@@ -150,12 +150,15 @@ class BorgDebug
                 $ip = static::getUserIp();
                 $from = $_SERVER['HTTP_REFERER'] ?? $ip;
 
+                $SERVER_NAME = $_SERVER['SERVER_NAME'] ?? getcwd();
+                $REQUEST_URI = $_SERVER['REQUEST_URI'] ?? '~URI';
+
                 $prefix = [
                     'LOG STARTED ##########################################################################################',
                     $method,
                     "FROM: $from",
-                    'SERVER_NAME:' . $_SERVER['SERVER_NAME'] ?? '~HOST',
-                    'REQUEST_URI:' . $_SERVER['REQUEST_URI'] ?? '~URI',
+                    'SERVER_NAME:' . $SERVER_NAME,
+                    'REQUEST_URI:' . $REQUEST_URI,
                     '$_GET:',
                     json_encode($_GET),
                     '$_POST:',

@@ -1,24 +1,13 @@
 <?php
 
-$a = 1234;
-$b = 1.2;
-$c = null;
-$d = 0;
-$e = '';
-$UND = 'UNDEFINED';
+function a(){
+    echo 1;
+    register_shutdown_function('b');
+}
 
-$res = sprintf(
-    '%s %s %s %s %s %s',
-    $a ?? $UND,
-    $b ?? $UND,
-    $c ?? $UND,
-    $d ?? $UND,
-    $e ?? $UND,
-    $undefined ?? $UND,
+function b()
+{
+    echo 2;
+}
 
-);
-
-
-echo PHP_EOL;
-echo $res;
-echo PHP_EOL;
+a();
