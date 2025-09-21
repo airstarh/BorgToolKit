@@ -97,18 +97,26 @@ html
     {
         background-color: var(--bg-pre) !important;
         color: var(--txt-pre) !important;
-        background-image: none !important;
+        /* background-image: none !important; */
     }
 }
 
 :before {
+<<<<<<< HEAD
     background-color: var(--col-b-100) !important;
+=======
+    background-color: blue !important;
+>>>>>>> ccd4384 (css total;)
     color: var(--col-w-100) !important;
 }
 
 :after
 {
+<<<<<<< HEAD
     background-color: var(--col-w-100) !important;
+=======
+    background-color: purple !important;
+>>>>>>> ccd4384 (css total;)
     color: var(--col-b-100) !important;
 }
 
