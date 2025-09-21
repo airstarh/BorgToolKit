@@ -25,7 +25,6 @@ LOYALTY = {
             switch (PostKey) {
                 case 'Hash':
                     return;
-                    break;
 
                 case 'TID':
                     pmRequestBody['TID'] = TID;

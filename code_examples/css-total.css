@@ -7,8 +7,8 @@
     --corporate-gradient-danger: 0deg, #f00 0%, black 100%;
 
     --col-w-100: #fff;
-    --col-w-50: #bbb;
-    --col-w-0: #999;
+    --col-w-50: #999;
+    --col-w-0: #777;
 
     --col-b-100: #000;
     --col-b-50: #222;
@@ -76,7 +76,6 @@ html
 , #footer
 , [class*=crayon] *
 , h1, h2, h3, h4, .wiki-content h1, .wiki-content h2, .wiki-content h3, .wiki-content h4, .pagetitle, .steptitle, .substeptitle, .formtitle, table.confluenceTable td.confluenceTd.highlight, table.confluenceTable td.confluenceTd.highlight > p, table.confluenceTable th.confluenceTh, table.confluenceTable th.confluenceTh > p, .wiki-content .tablesorter-header-inner, table.admin th, .form-element-large, .form-element-small, #toolbar #format-dropdown .format-h1 a, #toolbar #format-dropdown .format-h2 a, #toolbar #format-dropdown .format-h3 a, #toolbar #format-dropdown .format-h4 a
-, :after, :before
 {
     background-color: var(--bg-default) !important;
     color: var(--txt-default);
@@ -102,7 +101,16 @@ html
     }
 }
 
+:before {
+    background-color: var(--col-b-100) !important;
+    color: var(--col-w-100) !important;
+}
 
+:after
+{
+    background-color: var(--col-w-100) !important;
+    color: var(--col-b-100) !important;
+}
 
 /* region LINKS ANCHORS */
 a 
@@ -150,6 +158,14 @@ input
     background-color: var(--bg-input);
     color: var(--col-b-50) ;
 }
+
+/* * input[type="radio"]:before {
+    accent-color: blue !important;
+    content: '1234';
+    background-color: #ffffff !important;
+    color: #fff !;
+    border: 1px solid #fff;
+} */
 
 select
 , select.form-control
@@ -379,5 +395,9 @@ div.innerCell
     outline: #846593 10px solid ;
     background-color: var(--bg-default);
     color: var(--col-w-100) ;
+}
+
+.bk-green {
+  background-color: green !important;  
 }
 /* endregion CSS ADDON */
