@@ -1,0 +1,590 @@
+{
+    
+    // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    // DANGER !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    "update.enableWindowsBackgroundUpdates": false,
+    "update.mode": "none",
+    // NEVER !!!  "editor.experimentalGpuAcceleration": "on",
+    // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    
+    "window.title": "${rootName}",
+    // region workbench.colorCustomizations
+    "workbench.colorCustomizations": {
+        // region THEME
+        "contrastActiveBorder": "#830101",  // FOR TABS
+        "contrastBorder": "#ffffff",        // FOR SEARCH BOX
+        // endregion THEME
+        // region EDITOR
+        "editor.background": "#090909",
+        // region SEARCH FIND SELECTION LINE
+        // region LINE
+        "editorGutter.background": "#333333",
+        //
+        "editor.lineHighlightBackground": "#4901be7e",
+        "editor.lineHighlightBorder": "#4901be7e",
+        "editor.rangeHighlightBackground": "#4901be7e",
+        // STUCKY LINE
+        "editorStickyScroll.background": "#0000be",
+        //
+        "editorLineNumber.activeForeground": "#ffffff",
+        "editorLineNumber.foreground": "#000000",
+        // endregion LINE
+        // region FIND SEARCH
+        // FIND SEARCH
+        // FIND SEARCH
+        "editor.findMatchBorder": "#ffffff00",
+        "editor.findMatchHighlightBorder": "#ffffff00",
+        // inactive search
+        "editor.findMatchHighlightBackground": "#00fb00cc",
+        "editor.findMatchForeground": "#000000",
+        // active search
+        "editor.findMatchBackground": "#00fb00",
+        "editor.findMatchHighlightForeground": "#000000ee",
+        // endregion FIND SEARCH
+        // region WORD ACTIVE VARIABLES
+        "editor.wordHighlightTextBackground": "#0000FF99",
+        //
+        "editor.wordHighlightBackground": "#880068cc",
+        "editor.wordHighlightStrongBackground": "#880068cc",
+        //
+        "editor.wordHighlightTextBorder": "#880068dd",
+        "editor.wordHighlightBorder": "#880068dd",
+        "editor.wordHighlightStrongBorder": "#880068dd",
+        // region WORD ACTIVE VARIABLES
+        // region SELECTION
+        "editor.selectionBackground": "#ffffffff",
+        "editor.selectionForeground": "#ff0000ff",
+        //
+        "editor.selectionHighlightBackground": "#0000FFfe",
+        "editor.selectionHighlightBorder": "#0000FFfe",
+        // endregion SELECTION
+        // endregion SEARCH FIND SELECTION LINE
+        // HINTS
+        "phpParameterHint.hintForeground": "#000000",
+        "phpParameterHint.hintBackground": "#777777",
+        "editorInlayHint.foreground": "#000000aa",
+        "editorInlayHint.background": "#444444",
+        // () [] {}
+        "editorBracketHighlight.foreground1": "#ad99ff",
+        "editorBracketHighlight.foreground2": "#ad99ff",
+        "editorBracketHighlight.unexpectedBracket.foreground": "#ff0000",
+        "editorBracketMatch.background": "#005c00",
+        "editorBracketMatch.border": "#005c00",
+        // BOOKMARK
+        "bookmarks.lineBackground": "#01a8be7e",
+        // EXTENSION: Breakpoint Highlight : https://marketplace.visualstudio.com/items?itemName=ericgomez.breakpoint-highlight
+        "breakpointHighlight.backgroundColor": "#ffffff",
+        // region INDENT
+        "editorIndentGuide.activeBackground1": "#FF0000ff",
+        "editorIndentGuide.activeBackground2": "#a06800",
+        "editorIndentGuide.activeBackground3": "#FFFF00ff",
+        "editorIndentGuide.activeBackground4": "#008000ff",
+        "editorIndentGuide.activeBackground5": "#0000FFff",
+        "editorIndentGuide.activeBackground6": "#EE82EEff",
+        // non-active indent guide colors
+        "editorIndentGuide.background1": "#FF0000ff",
+        "editorIndentGuide.background2": "#a06800",
+        "editorIndentGuide.background3": "#FFFF00ff",
+        "editorIndentGuide.background4": "#008000ff",
+        "editorIndentGuide.background5": "#0000FFff",
+        "editorIndentGuide.background6": "#EE82EEff",
+        // endregion INDENT
+        // region DIFF
+        "diffEditor.insertedLineBackground": "#057005c8",
+        "diffEditor.removedLineBackground": "#78010199",
+        "diffEditor.insertedTextBackground": "#1e018599",
+        "diffEditor.insertedTextBorder": "#057005c8",
+        "diffEditor.removedTextBackground": "#5c5a0099",
+        "diffEditor.removedTextBorder": "#5c5a0099",
+        "diffEditor.border": "#000000",
+        "diffEditor.diagonalFill": "#00000099",
+        "diffEditorGutter.insertedLineBackground": "#aaffaa99",
+        "diffEditorGutter.removedLineBackground": "#ffaaff99",
+        // endregion DIFF
+        // endregion EDITOR
+        // region NOT EDITOR
+        // region TAB
+        "tab.border": "#ffffff",
+        "tab.activeBorder": "#830101",
+        "tab.unfocusedActiveBorder": "#830101",
+        "tab.activeBackground": "#830101",
+        "tab.activeForeground": "#ffffff",
+        "tab.inactiveBackground": "#333333",
+        // endregion TAB
+        // region BREADCRUMB
+        "breadcrumb.foreground": "#aaaaaa",
+        "breadcrumb.background": "#00530f",
+        "breadcrumb.focusForeground": "#fe8c8c",
+        "breadcrumb.activeSelectionForeground": "#27a9dd",
+        "breadcrumbPicker.background": "#dde258",
+        // endregion BREADCRUMB
+        // region POPUP
+        "editorHoverWidget.background": "#400068",
+        "editorSuggestWidget.background": "#400068",
+        "editorWidget.background": "#400068",
+        "editorSuggestWidget.selectedBackground": "#400068",
+        "editorHoverWidget.border": "#400068",
+        "editorSuggestWidget.border": "#400068",
+        "editorParameterHint.background": "#400068",
+        "editorSuggestWidget.highlightForeground": "#000000",
+        // endregion POPUP
+        // region LIST, EXPLORER, FILES
+        "list.inactiveSelectionBackground": "#614109",
+        "list.inactiveSelectionForeground": "#ffffff",
+        "list.activeSelectionBackground": "#072699",
+        "list.focusBackground": "#2f2f2f",
+        // endregion LIST, EXPLORER, FILES
+        // region  INPUT COLORS
+        "settings.numberInputBackground": "#66014c",
+        "settings.textInputBackground": "#66014c",
+        "settings.checkboxBackground": "#66014c",
+        "settings.dropdownBackground": "#66014c",
+        // INPUT
+        /*
+          https: //code.visualstudio.com/api/references/theme-color
+          input.background: Input box background.
+          input.border: Input box border.
+          input.foreground: Input box foreground.
+          input.placeholderForeground: Input box foreground color for placeholder text.
+          inputOption.activeBackground: Background color of activated options in input fields.
+          inputOption.activeBorder: Border color of activated options in input fields.
+          inputOption.activeForeground: Foreground color of activated options in input fields.
+          inputOption.hoverBackground: Background color of activated options in input fields.
+          inputValidation.errorBackground: Input validation background color for error severity.
+          inputValidation.errorForeground: Input validation foreground color for error severity.
+          inputValidation.errorBorder: Input validation border color for error severity.
+          inputValidation.infoBackground: Input validation background color for information severity.
+          inputValidation.infoForeground: Input validation foreground color for information severity.
+          inputValidation.infoBorder: Input validation border color for information severity.
+          inputValidation.warningBackground: Input validation background color for information warning.
+          inputValidation.warningForeground: Input validation foreground color for warning severity.
+          inputValidation.warningBorder: Input validation border color for warning severity.
+          Scrollbar control
+        */
+        "input.background": "#26004b",
+        "button.background": "#0202a8",
+        "button.hoverBackground": "#017301",
+        // endregion INPUT COLORS
+        // endregion NOT EDITOR
+    },
+    // endregion workbench.colorCustomizations
+
+    // region COLOR BY TOKEN
+    "editor.tokenColorCustomizations": {
+        //"functions": "#a143ff",
+        "textMateRules": [
+            {
+                "scope": "string.quoted.double",
+                "settings": {
+                    "foreground": "#eeff00",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "string.quoted.single",
+                "settings": {
+                    "foreground": "#eeff00",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "string.template",
+                "settings": {
+                    "foreground": "#eeff00",
+                    "fontStyle": "bold"
+                }
+            },
+
+            // {
+            //     "scope": "entity.name.function",
+            //     "settings": {
+            //         "foreground": "#6fc3f8",
+            //         "fontStyle": "bold"
+            //     }
+            // },
+
+            {
+                "scope": "variable.other",
+                "settings": {
+                    "foreground": "#2fff00"
+                }
+            },
+
+            {
+                "scope": [
+                    "comment",
+                    "comment.block.documentation",
+                    "comment.block.documentation.js",
+                    "comment.line.double-slash.js",
+                    "storage.type.class.jsdoc",
+                    "entity.name.type.instance.jsdoc",
+                    "variable.other.jsdoc",
+                    "punctuation.definition.comment",
+                    "punctuation.definition.comment.begin.documentation",
+                    "punctuation.definition.comment.end.documentation"
+                ],
+                "settings": {
+                    "foreground": "#00b7ff"
+                }
+            }
+        ]
+    },
+    // endregion COLOR BY TOKEN
+
+    // region HIGHLIGHT
+    "highlight.regexes": {
+        // region OWN HIGHLIGHTS
+        "([\\s]+)(.+?)(function.+?\\()": {
+            // "filterFileRegex": ".php",
+            "decorations": [
+                { },
+                { },
+                {
+                    "backgroundColor": "#ff4d00ad",
+                    "overviewRulerColor": "#b23500ad",
+                    "color": "#000000",
+                    "fontWeight": "bold",
+                }
+            ]
+        },
+        "(return|throw|exit|die)(.+?;)": {
+            // "filterFileRegex": ".php",
+            "decorations": [
+                {
+                    "backgroundColor": "#ff4d00ad",
+                    "color": "#000000",
+                    "fontWeight": "bold"
+                },
+                {
+                    "backgroundColor": "#ff4d00ad",
+                }
+            ]
+        },
+        "(\\s)(foreach|while|do|switch|case|for|region|endregion) ": {
+            // "filterFileRegex": ".php",
+            "decorations": [
+                {},
+                {
+                    "overviewRulerColor": "#ffcc00aa",
+                    "backgroundColor": "#ffcc00aa",
+                    "color": "#000000",
+                    "fontWeight": "bold"
+                }
+            ]
+        },
+        "(console.log|//VA:|plog|xxx|XXX|QQQ|qqq)": {
+            // "filterFileRegex": ".php",
+            "decorations": [
+                {
+                    "overviewRulerColor": "#0bbef9bd",
+                    "backgroundColor": "#0bbef9bd",
+                    "color": "#000000",
+                    "fontWeight": "bold"
+                }
+            ]
+        },
+        "(onclick|onchange|onsubmit|onfocusout)": {
+            // "filterFileRegex": ".php",
+            "decorations": [
+                {
+                    "overviewRulerColor": "#0bbef9bd",
+                    "backgroundColor": "#0bbef9bd",
+                    "color": "#000000aa",
+                    "fontWeight": "bold"
+                }
+            ]
+        },
+        "(\\[:.+?:\\])": {
+            // "filterFileRegex": ".php",
+            "decorations": [
+                {
+                    "overviewRulerColor": "#cafc017b",
+                    "backgroundColor": "#cafc017b",
+                    // "color": "#00000066",
+                    "fontWeight": "bold"
+                }
+            ]
+        },
+        // PHP CLASS METHODS CALL
+        "(->|::)([a-z-A-Z-0-9]{1,}?)[(]": {
+            "filterFileRegex": ".php",
+            "decorations": [
+                { },
+                {
+                    "overviewRulerColor": "#a001a040",
+                    "backgroundColor": "#ff00ff40",
+                    // "color": "#000000",
+                    "fontWeight": "bold"
+                }
+            ]
+        },
+        // endregion OWN HIGHLIGHTS
+        // region DEFAULTS
+        "((?:<!-- *)?(?:#|// @|//|./\\*+|<!--|--|\\* @|{!|{{!--|{{!) *TODO(?:\\s*\\([^)]+\\))?:?)((?!\\w)(?: *-->| *\\*/| *!}| *--}}| *}}|(?= *(?:[^:]//|/\\*+|<!--|@|--|{!|{{!--|{{!))|(?: +[^\\n@]*?)(?= *(?:[^:]//|/\\*+|<!--|@|--(?!>)|{!|{{!--|{{!))|(?: +[^@\\n]+)?))": {
+            "filterFileRegex": ".*(?<!CHANGELOG.md)$",
+            "decorations": [
+                {
+                    "overviewRulerColor": "#ffcc00",
+                    "backgroundColor": "#ffcc00",
+                    "color": "#1f1f1f",
+                    "fontWeight": "bold"
+                },
+                {
+                    "backgroundColor": "#ffcc00",
+                    "color": "#1f1f1f"
+                }
+            ]
+        },
+        "((?:<!-- *)?(?:#|// @|//|./\\*+|<!--|--|\\* @|{!|{{!--|{{!) *(?:FIXME|FIX|BUG|UGLY|DEBUG|HACK)(?:\\s*\\([^)]+\\))?:?)((?!\\w)(?: *-->| *\\*/| *!}| *--}}| *}}|(?= *(?:[^:]//|/\\*+|<!--|@|--|{!|{{!--|{{!))|(?: +[^\\n@]*?)(?= *(?:[^:]//|/\\*+|<!--|@|--(?!>)|{!|{{!--|{{!))|(?: +[^@\\n]+)?))": {
+            "filterFileRegex": ".*(?<!CHANGELOG.md)$",
+            "decorations": [
+                {
+                    "overviewRulerColor": "#cc0000",
+                    "backgroundColor": "#cc0000",
+                    "color": "#1f1f1f",
+                    "fontWeight": "bold"
+                },
+                {
+                    "backgroundColor": "#cc0000",
+                    "color": "#1f1f1f"
+                }
+            ]
+        },
+        "((?:<!-- *)?(?:#|// @|//|./\\*+|<!--|--|\\* @|{!|{{!--|{{!) *(?:REVIEW|OPTIMIZE|TSC)(?:\\s*\\([^)]+\\))?:?)((?!\\w)(?: *-->| *\\*/| *!}| *--}}| *}}|(?= *(?:[^:]//|/\\*+|<!--|@|--|{!|{{!--|{{!))|(?: +[^\\n@]*?)(?= *(?:[^:]//|/\\*+|<!--|@|--(?!>)|{!|{{!--|{{!))|(?: +[^@\\n]+)?))": {
+            "filterFileRegex": ".*(?<!CHANGELOG.md)$",
+            "decorations": [
+                {
+                    "overviewRulerColor": "#00ccff",
+                    "backgroundColor": "#00ccff",
+                    "color": "#1f1f1f",
+                    "fontWeight": "bold"
+                },
+                {
+                    "backgroundColor": "#00ccff",
+                    "color": "#1f1f1f"
+                }
+            ]
+        },
+        "((?:<!-- *)?(?:#|// @|//|./\\*+|<!--|--|\\* @|{!|{{!--|{{!) *(?:IDEA)(?:\\s*\\([^)]+\\))?:?)((?!\\w)(?: *-->| *\\*/| *!}| *--}}| *}}|(?= *(?:[^:]//|/\\*+|<!--|@|--|{!|{{!--|{{!))|(?: +[^\\n@]*?)(?= *(?:[^:]//|/\\*+|<!--|@|--(?!>)|{!|{{!--|{{!))|(?: +[^@\\n]+)?))": {
+            "filterFileRegex": ".*(?<!CHANGELOG.md)$",
+            "decorations": [
+                {
+                    "overviewRulerColor": "#cc00cc",
+                    "backgroundColor": "#cc00cc",
+                    "color": "#1f1f1f",
+                    "fontWeight": "bold"
+                },
+                {
+                    "backgroundColor": "#cc00cc",
+                    "color": "#1f1f1f"
+                }
+            ]
+        }
+        // endregion DEFAULTS
+    },
+    // endregion HIGHLIGHT
+    // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    // region CUSTOM
+    "bookmarks.navigateThroughAllFiles": false,
+    "json.format.keepLines": true,
+
+    "workbench.hover.delay": 3000,
+    "workbench.sash.hoverDelay": 2000,
+    "editor.hover.delay": 10000,
+    "editor.hover.hidingDelay": 100,
+
+    "workbench.editor.pinnedTabsOnSeparateRow": true,
+    "workbench.editor.wrapTabs": true,
+
+    "workbench.tree.indent": 33,
+
+    "files.autoSave": "onFocusChange",
+
+    "editor.mouseWheelZoom": true,
+
+    "editor.renderLineHighlight": "all",
+
+    "workbench.tree.expandMode": "doubleClick",
+    "workbench.list.openMode": "doubleClick",
+
+    "workbench.list.smoothScrolling": true,
+    "editor.smoothScrolling": true,
+    "terminal.integrated.smoothScrolling": true,
+    "editor.cursorSmoothCaretAnimation": "on",
+
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.mouseWheelScrollSensitivity": 0.3,
+    "editor.stickyScroll.maxLineCount": 3,
+    "workbench.tree.stickyScrollMaxItemCount": 20,
+    "editor.scrollbar.horizontalScrollbarSize": 5,
+    "editor.scrollbar.verticalScrollbarSize": 5,
+
+    "workbench.editor.closeOnFileDelete": true,
+    "explorer.confirmDelete": false,
+    "explorer.confirmPasteNative": false,
+    "explorer.confirmDragAndDrop": false,
+
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+
+    "editor.showFoldingControls": "always",
+
+    "editor.smartSelect.selectLeadingAndTrailingWhitespace": false,
+    "editor.smartSelect.selectSubwords": false,
+    "workbench.tree.renderIndentGuides": "always",
+    "workbench.view.alwaysShowHeaderActions": true,
+    "explorer.autoReveal": "focusNoScroll",
+    "editor.cursorWidth": 4,
+
+    "window.restoreFullscreen": true,
+    "editor.autoIndent": "full",
+    "workbench.list.horizontalScrolling": true,
+    "explorer.compactFolders": false,
+    "explorer.copyPathSeparator": "/",
+    "explorer.copyRelativePathSeparator": "/",
+    "editor.fontFamily": "Monaco",
+    "editor.minimap.enabled": false,
+    "editor.codeLens": false,
+    "workbench.editor.openPositioning": "last",
+    // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    // region SPELL
+    "cSpell.language": "en,ru",
+    "cSpell.userWords": [
+        "answ",
+        "atts",
+        "Azbuka",
+        "Bootbox",
+        "Coeff",
+        "CURLOPT",
+        "Debet",
+        "devxa",
+        "egamings",
+        "etts",
+        "feeamount",
+        "Freebets",
+        "Freeround",
+        "Freerounds",
+        "funcore",
+        "fundist",
+        "HTTPHEADER",
+        "idekey",
+        "intelephense",
+        "locklib",
+        "maint",
+        "modificator",
+        "Modificators",
+        "Numpad",
+        "plog",
+        "Promocode",
+        "qatest",
+        "Redirector",
+        "sewa",
+        "vazovsky",
+        "автозаполнения",
+        "коммитах",
+        "логировать",
+        "Модал",
+        "Модале",
+        "Модалом",
+        "регресионное",
+        "Роут",
+        "Спана",
+        "третьесторонним",
+        "Фандиста"
+    ],
+    // endregion SPELL
+    // region EXCLIDE
+    "files.exclude": {
+        "**/.idea": true,
+        "**/.project": true,
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/.git": true,
+        "**/dist": true,
+        "**/build": true,
+        "**/__pycache__": true, // Example for Python
+        "**/.venv": true, // Example for Python virtual environment
+        "**/database": true,
+        "ChangeLog": true
+    },
+    "search.exclude": {
+        "**/.idea": true,
+        "**/.project": true,
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/.git": true,
+        "**/dist": true,
+        "**/build": true,
+        "**/__pycache__": true,
+        "**/.venv": true,
+        "**/database": true,
+        "ChangeLog": true
+    },
+    // region EXCLIDE
+    // "workbench.editor.enablePreview": false,
+    "workbench.editor.revealIfOpen": true,
+    // endregion CUSTOM
+    // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[php]": {
+        "editor.defaultFormatter": "DEVSENSE.phptools-vscode"
+    },
+    "remote.SSH.remotePlatform": {
+        "fundist.dev": "linux"
+    },
+    "workbench.colorTheme": "Default High Contrast",
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "editor.accessibilitySupport": "off",
+    "window.newWindowDimensions": "maximized",
+    "files.associations": {
+        "*.blade.php": "php",
+        "*.tpl": "php"
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "php.stubs": [
+        "*",
+        "Zookeeper",
+    ],
+    "editor.definitionLinkOpensInPeek": false,
+    "bookmarks.saveBookmarksInProject": true,
+    "search.showLineNumbers": true,
+    "notebook.lineNumbers": "on",
+    "zenMode.hideLineNumbers": false,
+    "search.defaultViewMode": "tree",
+    "search.quickAccess.preserveInput": true,
+    "search.searchEditor.defaultNumberOfContextLines": 3,
+    "editor.colorDecoratorsActivatedOn": "click",
+    "editor.colorDecoratorsLimit": 5000,
+    "editor.defaultColorDecorators": "always",
+    "[sql]": {
+        "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
+    },
+    "[dockercompose]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.autoIndent": "advanced",
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": true
+        },
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[github-actions-workflow]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+}
