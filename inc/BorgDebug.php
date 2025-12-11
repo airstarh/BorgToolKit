@@ -149,6 +149,7 @@ class BorgDebug
                 $method = static::getReqMethod();
                 $ip = static::getUserIp();
                 $from = $_SERVER['HTTP_REFERER'] ?? $ip;
+                $agent = $_SERVER['HTTP_USER_AGENT'] ?? '~';
 
                 $SERVER_NAME = $_SERVER['SERVER_NAME'] ?? getcwd();
                 $REQUEST_URI = $_SERVER['REQUEST_URI'] ?? '~URI';
@@ -157,10 +158,14 @@ class BorgDebug
                     'LOG STARTED ##########################################################################################',
                     $method,
                     "FROM: $from",
+                    "AGENT: $agent",
+                    ' ',
                     'SERVER_NAME:' . $SERVER_NAME,
                     'REQUEST_URI:' . $REQUEST_URI,
+                    ' ',
                     '$_GET:',
                     json_encode($_GET),
+                    ' ',
                     '$_POST:',
                     json_encode($_POST),
                 ];
