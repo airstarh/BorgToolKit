@@ -1,7 +1,3 @@
-/*
-@import url("//borg.home/BorgToolKit/code_examples/css-total.css");
-*/
-
 /* region VARS */
 :root {
     --corporate-gradient-danger: 0deg, #f00 0%, black 100%;
@@ -13,12 +9,12 @@
     --col-b-100: #000;
     --col-b-50: #222;
     --col-b-0: #444;
-    
+
     --bg-default: var(--col-b-50);
-        --txt-default: var(--col-w-50);
+    --txt-default: var(--col-w-50);
 
     --bg-selection: #0000ff;
-        --txt-selection: var(--col-w-100);
+    --txt-selection: var(--col-w-100);
 
     --bg-disabled: #555;
 
@@ -30,7 +26,7 @@
 
 
     --bg-pre: var(--col-b-100);
-        --txt-pre: #00cf00;
+    --txt-pre: #00cf00;
 
     /* FORM */
     --bg-button: #a85600ee;
@@ -38,45 +34,68 @@
     --bg-input: #9cffed;
 
     --bg-select: rgb(124, 238, 107);
-        --bg-select-hover: blue;
-            --bg-select-checked: green;
+    --bg-select-hover: blue;
+    --bg-select-checked: green;
 }
+
 /* endregion VARS */
 
 /* region GLOBAL */
-html
-, body
-, div
-, h1
-, h2
-, h3
-, h4
-, ul
-, ul li
-, dl
-, fieldset
-, legend
-, p
-, p span
-, span
-, strong
-, aside
-, header
-, content
-, footer
-, main
-, section
-, nav
-, sl-details
-, small
-, label
-, form
-, #header
-, #content
-, #footer
-, [class*=crayon] *
-, h1, h2, h3, h4, .wiki-content h1, .wiki-content h2, .wiki-content h3, .wiki-content h4, .pagetitle, .steptitle, .substeptitle, .formtitle, table.confluenceTable td.confluenceTd.highlight, table.confluenceTable td.confluenceTd.highlight > p, table.confluenceTable th.confluenceTh, table.confluenceTable th.confluenceTh > p, .wiki-content .tablesorter-header-inner, table.admin th, .form-element-large, .form-element-small, #toolbar #format-dropdown .format-h1 a, #toolbar #format-dropdown .format-h2 a, #toolbar #format-dropdown .format-h3 a, #toolbar #format-dropdown .format-h4 a
-{
+html,
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+ul,
+ul li,
+dl,
+fieldset,
+legend,
+p,
+p span,
+span,
+strong,
+aside,
+header,
+content,
+footer,
+main,
+section,
+nav,
+sl-details,
+small,
+label,
+form,
+#header,
+#content,
+#footer,
+[class*=crayon] *,
+h1,
+h2,
+h3,
+h4,
+.wiki-content h1,
+.wiki-content h2,
+.wiki-content h3,
+.wiki-content h4,
+.pagetitle,
+.steptitle,
+.substeptitle,
+.formtitle,
+table.confluenceTable td.confluenceTd.highlight,
+table.confluenceTable td.confluenceTd.highlight>p,
+table.confluenceTable th.confluenceTh,
+table.confluenceTable th.confluenceTh>p,
+.wiki-content .tablesorter-header-inner,
+table.admin th,
+.form-element-large,
+.form-element-small,
+#toolbar #format-dropdown .format-h1 a,
+#toolbar #format-dropdown .format-h2 a,
+#toolbar #format-dropdown .format-h3 a,
+#toolbar #format-dropdown .format-h4 a {
     background-color: var(--bg-default) !important;
     color: var(--txt-default);
     /* opacity: 1; */
@@ -86,15 +105,14 @@ html
         color: #fff !important;
     }
 
-    pre
-    , code
-    , pre *
-    , code *
-    , blockquote
-    , blockquote *
-    , *[class*=code]
-    , *[class*=code] span
-    {
+    pre,
+    code,
+    pre *,
+    code *,
+    blockquote,
+    blockquote *,
+    *[class*=code],
+    *[class*=code] span {
         background-color: var(--bg-pre) !important;
         color: var(--txt-pre) !important;
         /* background-image: none !important; */
@@ -102,61 +120,53 @@ html
 }
 
 :before {
-    background-color: blue !important;
-    color: var(--col-w-100) !important;
+    background-color: rgba(179, 63, 0, 0.3) !important;
+    color: #ffffff !important;
 }
 
-:after
-{
-    background-color: purple !important;
+:after {
+    background-color: rgba(108, 0, 108, 0.3) !important;
     color: var(--col-b-100) !important;
 }
 
 /* region LINKS ANCHORS */
-a 
-{
+a {
     background: var(--link-bg);
     color: var(--col-w-100) !important;
 
     & * {
-        background: none transparent !important;          
+        background: none transparent !important;
         color: var(--col-w-100) !important;
     }
 }
+
 /* region HOVER */
-a:not([class*=icon]):hover
-, a[class*=link]:hover
-{
+a:not([class*=icon]):hover,
+a[class*=link]:hover {
     background-clip: padding-box !important;
     background: var(--link-bg-hover) !important;
     color: var(--col-w-100) !important;
 }
 
-button:hover
-, .btn:hover
-, [class*=icon]:hover
-, [class*=btn]:hover
-{
+button:hover,
+.btn:hover,
+[class*=icon]:hover,
+[class*=btn]:hover {
     background-clip: padding-box !important;
     background-color: var(--link-bg-hover) !important;
     color: var(--col-w-100) !important;
 }
-/* endregion HOVER */
-/* endregion LINKS ANCHORS */
-
-
 
 /* region FORM */
-input
-, input.form-control
-, * input.checkbox
-, input[type=checkbox]
-, input[type=radio]
-, textarea
-, textarea.form-control
-{
-    background-color: var(--bg-input);
-    color: var(--col-b-50) ;
+input,
+input.form-control,
+* input.checkbox,
+input[type=checkbox],
+input[type=radio],
+textarea,
+textarea.form-control {
+    background-color: var(--bg-input) !important;
+    color: var(--col-b-50) !important;
 }
 
 /* * input[type="radio"]:before {
@@ -167,41 +177,38 @@ input
     border: 1px solid #fff;
 } */
 
-select
-, select.form-control
-, .select2
-, .select2 *
-, .select2-container
-, .select2-container *
-, .select2-selection__rendered
-, .select2-selection__rendered *
-, .select2-selection
-, .select2-selection--single
-{
+select,
+select.form-control,
+.select2,
+.select2 *,
+.select2-container,
+.select2-container *,
+.select2-selection__rendered,
+.select2-selection__rendered *,
+.select2-selection,
+.select2-selection--single {
     background-color: var(--bg-select) !important;
     color: #222 !important;
 
-    & option:hover
-    , & li:hover
-    , & li.select2-results__option--highlighted
-    {
+    & option:hover,
+    & li:hover,
+    & li.select2-results__option--highlighted {
         background-color: var(--bg-select-hover) !important;
     }
-    & option:checked
-    , & li.select2-selection__choice
-    {
+
+    & option:checked,
+    & li.select2-selection__choice {
         background-color: var(--bg-select-checked) !important;
     }
 }
 
-button
-, [type=button]
-, [type=submit]
-, .icon
-, [class*=icon]
-, .icon-only
-, .btn
-{
+button,
+[type=button],
+[type=submit],
+.icon,
+[class*=icon],
+.icon-only,
+.btn {
     opacity: 1 !important;
     border-color: var(--bg-button) !important;
     outline-color: var(--bg-button) !important;
@@ -217,82 +224,79 @@ button
     }
 }
 
-*:disabled
-, .disabled
-, .disabled *
-, .inactive
-, .inactive *
-, .form-control.disabled
-, .form-control .disabled
-, .form-control[disabled=disabled]
-, .form-control[readonly]
-{
+*:disabled,
+.disabled,
+.disabled *,
+.inactive,
+.inactive *,
+.form-control.disabled,
+.form-control .disabled,
+.form-control[disabled=disabled],
+.form-control[readonly] {
     background-color: var(--col-w-0) !important;
     color: var(--col-b-100) !important;
 }
+
 /* endregion FORM */
 
 
 
 
 /* region table */
-table
-, thead
-, tbody
-, tfoot
-, tr
-{
+table,
+thead,
+tbody,
+tfoot,
+tr {
     background-color: #222 !important;
     color: var(--col-w-0) !important;
 }
 
-td 
-, th
-{
+td,
+th {
     background-color: transparent !important;
     opacity: 1;
 }
 
-tr:hover
-, tr:hover td
-, tr:hover th
-, tr:hover tf
-{
+tr:hover,
+tr:hover td,
+tr:hover th,
+tr:hover tf {
     background-color: var(--col-b-0) !important;
     color: var(--col-w-0) !important;
     opacity: 1 !important;
 }
+
 /* endregion table */
 
 
 
 /* region ACTIVE */
-.active
-, .selected
-, .active>a
-, a:active
-, a.active
-, a.selected
-, [class*=active]
-, .active-table-line
-, [class*=showed]
-{
+.active,
+.selected,
+.active>a,
+a:active,
+a.active,
+a.selected,
+[class*=active],
+.active-table-line,
+[class*=showed] {
     background: var(--bg-active) !important;
     color: var(--col-w-100) !important;
 }
+
 /* endregion ACTIVE */
 
 
 
 /* region ERROR */
-[class*=error]
-, [class*=Error]
-, [class*=not-valid]
-, [class*=invalid]
-, [class*=danger]
-, [class*=danger] span
-, [class*=warning]
-{
+[class*=error],
+[class*=Error],
+[class*=not-valid],
+[class*=invalid],
+[class*=danger],
+[class*=danger] span,
+[class*=warning] {
     border-color: yellow !important;
     background-color: rgb(164, 0, 0) !important;
     color: yellow !important;
@@ -303,16 +307,16 @@ tr:hover
     }
 
 }
+
 /* endregion ERROR */
 /* endregion GLOBAL */
 
 
 
 /* region SPECIFIC */
-.issue
-, div.issue
-, div.issue *:not(a, input, textarea, select, button, .select2 *)
-{
+.issue,
+div.issue,
+div.issue *:not(a, input, textarea, select, button, .select2 *) {
     background-color: #490076 !important;
     color: var(--col-w-50)
 }
@@ -324,80 +328,85 @@ tr:hover
 
 .journal {
     margin-top: 100px;
-    padding: 15px 0; 
-    background-color:var(--col-b-100) !important;
-    
+    padding: 15px 0;
+    background-color: var(--col-b-100) !important;
+
     /* & *:not(a):not(button):not(select):not(textarea)  */
-    & div
-    ,& p
-    ,& span
-    ,& ul
-    ,& ol
-    ,& li
-    ,& h4
-    ,& h3
-    ,& h2
-    ,& h1
-    {
-        background-color:var(--col-b-100) !important;
+    & div,
+    & p,
+    & span,
+    & ul,
+    & ol,
+    & li,
+    & h4,
+    & h3,
+    & h2,
+    & h1 {
+        background-color: var(--col-b-100) !important;
         color: var(--col-w-0)
     }
 }
 
-.white-bg
-, .gray-bg
-{
+.white-bg,
+.gray-bg {
     background-color: #333;
 }
 
-div.innerCell
-, div.innerCell h1
-, div.innerCell h2
-, div.innerCell h3
-, div.innerCell h4
-, div.innerCell p
-, div.innerCell p span 
-, div.innerCell span
-{
+div.innerCell,
+div.innerCell h1,
+div.innerCell h2,
+div.innerCell h3,
+div.innerCell h4,
+div.innerCell p,
+div.innerCell p span,
+div.innerCell span {
     color: var(--txt-default) !important;
 }
+
 /* endregion SPECIFIC */
 
 
 
 /* region SCROLLBAR */
 ::-webkit-scrollbar {
-    width: 10px; /* width of the entire scrollbar */
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background-color: #555; /* color of the scroll thumb */
-    border-radius: 10px; /* roundness of the scroll thumb */
-    border: 2px solid #ccc; /* optional: add border around scroll thumb */
-  }
-  
-  ::-webkit-scrollbar-track {
-    background-color: #f1f1f1; /* color of the track */
-    border-radius: 10px; /* roundness of the track */
-  }
-  
-  /* Hover effects (optional) */
-  ::-webkit-scrollbar-thumb:hover {
+    width: 10px;
+    /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #555;
+    /* color of the scroll thumb */
+    border-radius: 10px;
+    /* roundness of the scroll thumb */
+    border: 2px solid #ccc;
+    /* optional: add border around scroll thumb */
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    /* color of the track */
+    border-radius: 10px;
+    /* roundness of the track */
+}
+
+/* Hover effects (optional) */
+::-webkit-scrollbar-thumb:hover {
     background-color: #333;
-  }
-  /* endregion SCROLLBAR */
+}
+
+/* endregion SCROLLBAR */
 
 
 
-  /* region CSS ADDON */
-.ucss-panel
-{
-    outline: #846593 10px solid ;
+/* region CSS ADDON */
+.ucss-panel {
+    outline: #846593 10px solid;
     background-color: var(--bg-default);
-    color: var(--col-w-100) ;
+    color: var(--col-w-100);
 }
 
 .bk-green {
-  background-color: green !important;  
+    background-color: green !important;
 }
+
 /* endregion CSS ADDON */
