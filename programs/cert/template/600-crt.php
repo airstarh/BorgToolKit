@@ -5,7 +5,7 @@
  */
 
 /**
- * @var object $data
+ * @var CertConfig $data
  */
 
 $in = $data->fileCsr; //FILE eg: borg.home.csr

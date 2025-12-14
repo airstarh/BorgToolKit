@@ -5,12 +5,12 @@
  */
 
 /**
- * @var object $data
+ * @var CertConfig $data
  */
 
 $DNS1 = $data->DNS1; // eg: borg.home
 $DNS2 = $data->DNS2; // eg: x.borg.home
-$IP1 = $data->IP1; // eg: 192.168.1.120
+$IP1 = $data->IP; // eg: 192.168.1.120
 ?>
 authorityKeyIdentifier=keyid,issuer
 basicConstraints=CA:FALSE

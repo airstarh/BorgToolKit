@@ -1,18 +1,6 @@
 <?php
 
-$data = new stdClass();
-
-$data->CN = 'XXX';
-$data->O = 'XXX';
-$data->fileCaPrivateKey = 'XXX';
-$data->fileRootCertificatePem = 'XXX';
-$data->DNS1 = 'XXX';
-$data->DNS2 = 'XXX';
-$data->IP1 = 'XXX';
-$data->fileServerKey = 'XXX';
-$data->fileCsr = 'XXX';
-$data->fileCrt = 'XXX';
-$data->fileExtfile = 'XXX';
+$data = new CertConfig();
 
 # Generate Private Key                          [borg_ca.key]
 # Generate Root Certificate                     [borg_ca.pem]

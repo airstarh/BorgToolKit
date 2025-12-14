@@ -5,7 +5,7 @@
  */
 
 /**
- * @var object $data
+ * @var CertConfig $data
  */
 
 $key = $data->fileServerKey; //FILE eg: borg.home.key

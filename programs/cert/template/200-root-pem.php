@@ -5,7 +5,7 @@
  */
 
 /**
- * @var object $data
+ * @var CertConfig $data
  */
 
 $key = $data->fileCaPrivateKey; //FILE eg: borg_ca.key
