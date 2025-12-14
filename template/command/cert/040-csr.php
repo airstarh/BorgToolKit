@@ -1,6 +1,6 @@
 <?php
 /**
- * Generate CSR1
+ * Generate CSR
  * openssl req -new -key borg.home.key -out borg.home.csr -subj "/C=US/ST=Local/L=Local/O=Borg Home/CN=borg.home"
  */
 
