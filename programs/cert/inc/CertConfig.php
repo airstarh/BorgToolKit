@@ -2,7 +2,7 @@
 
 class CertConfig
 {
-    public $dist = __DIR__ . '/../dist';
+    public $dist = CERT_ROOT . '/dist';
     public $CN = 'borg.home';
     public $O = 'Borg Home';
     public $fileCaPrivateKey = 'borg_ca.key';

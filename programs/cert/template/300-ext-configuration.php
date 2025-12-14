@@ -18,6 +18,6 @@ keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
 subjectAltName = @alt_names
 
 [alt_names]
-DNS.1 = <?= $DNS1 ?>
-DNS.2 = <?= $DNS2 ?>
-IP.1 = <?= $IP1 ?>
+DNS.1 = <?= $DNS1; ?><?= PHP_EOL ?>
+DNS.2 = <?= $DNS2; ?><?= PHP_EOL ?>
+IP.1 = <?= $IP1; ?>

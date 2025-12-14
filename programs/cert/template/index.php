@@ -1,7 +1,4 @@
 <?php
-
-$data = new CertConfig();
-
 # Generate Private Key                          [borg_ca.key]
 # Generate Root Certificate                     [borg_ca.pem]
 # Generate the Server Certificate
