@@ -8,6 +8,6 @@
  * @var object $data
  */
 
-$out = $data->fileCaKey; //FILE eg: borg_ca.key
+$out = $data->fileCaPrivateKey; //FILE eg: borg_ca.key
 ?>
 openssl genrsa -out <?= $out ?> 4096

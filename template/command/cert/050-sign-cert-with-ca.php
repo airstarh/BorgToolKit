@@ -9,8 +9,8 @@
  */
 
 $in = $data->fileCsr; //FILE eg: borg.home.csr
-$CA = $data->fileCaKeyCaPem; //FILE eg: borg_ca.pem
-$CAkey = $data->fileCaKey; //FILE eg: borg_ca.key
+$CA = $data->fileRootCertificatePem; //FILE eg: borg_ca.pem
+$CAkey = $data->fileCaPrivateKey; //FILE eg: borg_ca.key
 $out = $data->fileCrt; //FILE eg: borg.home.crt
 $extfile = $data->fileExtfile; //FILE CONFIGURATION from 020-ext-configuration.php. eg: borg.home.ext
 ?>

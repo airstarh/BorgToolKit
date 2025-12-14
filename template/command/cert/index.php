@@ -4,8 +4,8 @@ $data = new stdClass();
 
 $data->CN = 'XXX';
 $data->O = 'XXX';
-$data->fileCaKey = 'XXX';
-$data->fileCaKeyCaPem = 'XXX';
+$data->fileCaPrivateKey = 'XXX';
+$data->fileRootCertificatePem = 'XXX';
 $data->DNS1 = 'XXX';
 $data->DNS2 = 'XXX';
 $data->IP1 = 'XXX';

@@ -8,9 +8,9 @@
  * @var object $data
  */
 
-$key = $data->fileCaKey; //FILE eg: borg_ca.key
+$key = $data->fileCaPrivateKey; //FILE eg: borg_ca.key
 $CN = $data->CN; // eg: borg.home
 $O = $data->O; // eg: Borg Home
-$out = $data->fileCaKeyCaPem; //FILE eg: borg_ca.pem
+$out = $data->fileRootCertificatePem; //FILE eg: borg_ca.pem
 ?>
 openssl req -x509 -new -nodes -key <?= $key ?> -sha256 -days 3650 -out <?= $out ?> -subj "/C=US/ST=Local/L=Local/O=<?= $O ?> CA/CN=<?= $CN ?> Root CA"
