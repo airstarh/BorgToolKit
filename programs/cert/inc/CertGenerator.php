@@ -18,8 +18,19 @@ class CertGenerator
     {
         $this->config = new CertConfig();
 
-        foreach ($config as $k => $v) {
-            $this->config->$k = $v;
+        foreach ($this->config as $field => $v) {
+            $value = $config[$field] ?? $v;
+            $this->config->$field = $value;
+        }
+
+        foreach ($this->config as $field => $v) {
+            if (false !== strpos($field, 'file')) {
+                $path = [
+                    $this->config->dist,
+                    $v
+                ];
+                $this->config->$field = implode(DIRECTORY_SEPARATOR, $path);
+            }
         }
     }
 
@@ -33,7 +44,7 @@ class CertGenerator
             $distFile = $this->config->dist . DIRECTORY_SEPARATOR . "res-{$counter}";
             file_put_contents($distFile, $command);
         }
-        BorgDebug::dumpBeautiful($this->stackCommand[2]);
+        BorgDebug::dumpBeautiful($this->stackCommand);
 
     }
 
