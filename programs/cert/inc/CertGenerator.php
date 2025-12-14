@@ -45,7 +45,7 @@ class CertGenerator
         }
     }
 
-    public function buildCommand($template)
+    private function buildCommand($template)
     {
         $folder = $this->pathTemplate;
         $file = $template;
@@ -53,7 +53,7 @@ class CertGenerator
         return BorgTemplate::render($path, $this->config);
     }
 
-    public function distFolder()
+    private function distFolder()
     {
         $parts = [
             $this->config->dist,
@@ -64,7 +64,7 @@ class CertGenerator
         return $path;
     }
 
-    public function distFile(string $fileName)
+    private function distFile(string $fileName)
     {
         $parts = [
             $this->distFolder(),
@@ -73,7 +73,7 @@ class CertGenerator
 
         return implode(DIRECTORY_SEPARATOR, $parts);
     }
-    public function mkPathForce(string $path)
+    private function mkPathForce(string $path)
     {
         if (!is_dir($path)) {
             if (!mkdir($path, 0755, true)) {
@@ -82,7 +82,7 @@ class CertGenerator
         }
     }
 
-    public function exec($command)
+    private function exec($command)
     {
         $last_line = exec($command, $output, $return_var);
 
