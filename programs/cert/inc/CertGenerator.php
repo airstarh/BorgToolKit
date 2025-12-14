@@ -41,10 +41,8 @@ class CertGenerator
                 continue;
             }
             $command = $this->buildCommand($template);
-            $this->stackCommand[] = $command;
+            $this->exec(trim($command));
         }
-        BorgDebug::dumpBeautiful($this->stackCommand);
-
     }
 
     public function buildCommand($template)
@@ -82,5 +80,17 @@ class CertGenerator
                 die('Failed to create directories...');
             }
         }
+    }
+
+    public function exec($command)
+    {
+        $last_line = exec($command, $output, $return_var);
+
+        BorgDebug::dumpBeautiful([
+            'command' => $command,
+            'return_var' => $return_var,
+            'last_line' => $last_line,
+            'output' => $output,
+        ]);
     }
 }
