@@ -12,7 +12,8 @@ class CertConfig
         'x.borg.home',
     ];
     public $IP = [
-        '192.168.1.120'
+        '127.0.0.1',
+        '192.168.2.104',
     ];
     public $fileServerKey = 'borg.home.key';
     public $fileCsr = 'borg.home.csr';
