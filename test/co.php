@@ -5,15 +5,9 @@ ini_set('display_startup_errors', 1);
 
 ####################################################################################################
 
-$format = 'Y-m-d H:i:s';
+$arr = ['alice', ''];
 
-$value = '2025-12-13 23:59:58';
-// $value = '2025-12-13';
-$value = time();
-
-// $res = DateTime::createFromFormat($format, $value);
-
-$res = date('Y-m-d H:i:s', $value);
+$res = implode('/', $arr);
 
 ####################################################################################################
 echo PHP_EOL;
