@@ -120,13 +120,15 @@ table.admin th,
 }
 
 :before {
-    background-color: rgba(179, 63, 0, 0.3) !important;
+    background-color: rgba(238, 84, 1, 0.3) !important;
     color: #ffffff !important;
+    opacity: .3;
 }
 
 :after {
-    background-color: rgba(108, 0, 108, 0.3) !important;
+    background-color: rgba(223, 1, 223, 0.3) !important;
     color: var(--col-b-100) !important;
+    opacity: .3;
 }
 
 /* region LINKS ANCHORS */
