@@ -1,4 +1,4 @@
-// ##################################################
+1// ##################################################
 // VARS CUSTOM
 pm.collectionVariables.set('ROUTE_CURRENT', 'Events/Bundle');
 const ROUTE_CURRENT = pm.collectionVariables.get('ROUTE_CURRENT');
@@ -121,6 +121,7 @@ function getCustomData() {
 }
 
 options.customRequest = {};
+options.customRequest.TID = 'FUNDIST';
 options.customRequest.Data = getCustomData();
 
 // ##################################################
