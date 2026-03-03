@@ -1,8 +1,8 @@
 let script = [];
 const files = [
-    'http://borg.home/BorgToolKit/code_examples/postman/patterns/sg-collection-pre-request.js',
-    'http://borg.home/BorgToolKit/code_examples/postman/patterns/mockup.js',
-    'http://borg.home/BorgToolKit/code_examples/postman/patterns/sg-events-bundle.js',
+    'http://borg.home/BorgToolKit/postman/patterns/sg-collection-pre-request.js',
+    'http://borg.home/BorgToolKit/postman/patterns/mockup.js',
+    'http://borg.home/BorgToolKit/postman/patterns/sg-events-bundle.js',
 ];
 
 function sewaPromises(f, order) {
