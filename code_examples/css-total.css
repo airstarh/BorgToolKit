@@ -1,3 +1,9 @@
+// @import url('https://borg.home/BorgToolKit/code_examples/css-total.css');
+
+/*
+@import url("//borg.home/BorgToolKit/code_examples/css-total.css");
+*/
+
 /* region VARS */
 :root {
     --corporate-gradient-danger: 0deg, #f00 0%, black 100%;
@@ -190,15 +196,15 @@ table.admin th,
 }
 
 :before {
-    background-color: rgba(238, 84, 1, 0.3) !important;
+    background-color: rgb(116, 114, 49) !important;
     color: #ffffff !important;
-    opacity: .3;
+    opacity: .3 !important;
 }
 
 :after {
     background-color: purple !important;
-    color: var(--col-b-100) !important;
-    opacity: .3;
+    color: #000000 !important;
+    opacity: .3 !important;
 }
 
 /* region LINKS ANCHORS */
