@@ -23,17 +23,21 @@ function getCustomData() {
   const DATE_3 = "2026-04-11 17:21:59";
 
   const customData = {
-    ForWLC: "1",
-    OnlyPastWithMembers: "1",
-    Period: "front-current",
+    Status: "100,1",
+    Period: "past",
     Currency: "EUR",
-    WithWinners: "1",
-    WinnersLimit: "10",
-    PageLength: "1",
-    TID: "",
+    ForWLC: "1",
+    HideFromHistory: "0",
+    PageLength: "5",
+    Limit: "1",
+    Order: {
+      ID: "DESC",
+    },
+    TID: "FUNDIST",
+    qatest: "1",
     Hash: "",
     req_uniq_id:
-      "fundist-loyalty-qa1-697868b847-ggkqv:21:d164cd44c632f83e25b7dd0c9c8c9da6",
+      "site11-retn-dev-2:3740439:1775755970.734:662feadfd4e54eb939c07f59d6f30834",
   };
 
   return customData;

@@ -18,6 +18,7 @@ ClientPWD = mockup.Devcasino.ClientPWD;
 function getCustomData() {
   const XSS = "<script>a=b</script>";
   const NAME = "XXX 1000";
+  const ALIAS = "ALIAS";
   const DATE_1 = "2026-04-10 16:21:59";
   const DATE_2 = "2026-04-11 16:21:59";
   const DATE_3 = "2026-04-11 17:21:59";
@@ -44,13 +45,13 @@ function getCustomData() {
         EUR: 1,
         RUB: 0.12,
         USD: 0.1,
-        BYN: "0.1",
+        BYN: "+0.1",
       },
       DateStart: DATE_1,
       DateEnd: DATE_2,
       DrawingDate: DATE_3,
       Repeat: "once",
-      Alias: `${NAME}`,
+      Alias: `${ALIAS}`,
       // Alias: `${NAME} ${XSS}`,
       Conditions: {
         Levels: [1, 2],
