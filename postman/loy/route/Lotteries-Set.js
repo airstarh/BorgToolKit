@@ -18,23 +18,24 @@ ClientPWD = mockup.Devcasino.ClientPWD;
 function getCustomData() {
   const XSS = "<script>a=b</script>";
   const NAME = "XXX 1000";
+  const CYR = "Кириллические символы 👻 😄 😁";
   const ALIAS = "ALIAS";
-  const DATE_1 = "2026-04-10 16:21:59";
-  const DATE_2 = "2026-04-11 16:21:59";
-  const DATE_3 = "2026-04-11 17:21:59";
+  const DATE_1 = "2026-04-17 16:21:59";
+  const DATE_2 = "2026-04-18 16:21:59";
+  const DATE_3 = "2026-04-18 17:21:59";
 
   const customData = {
     JSON: {
       ID: 54738,
       Name: {
         en: `${NAME}`,
-        ru: `${NAME}`,
+        ru: `${CYR}`,
         // ru: `${NAME} ${XSS}`,
       },
       Description: {
         // en: `${NAME}`,
         en: `${NAME}`,
-        ru: `${NAME}`,
+        ru: `${CYR}`,
         // ru: `${NAME} ${XSS}`,
       },
       Images: {
@@ -52,7 +53,6 @@ function getCustomData() {
       DrawingDate: DATE_3,
       Repeat: "once",
       Alias: `${ALIAS}`,
-      // Alias: `${NAME} ${XSS}`,
       Conditions: {
         Levels: [1, 2],
         DuplicateLevels: [3],
