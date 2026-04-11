@@ -16,65 +16,69 @@ ClientPWD = mockup.Devcasino.ClientPWD;
 // ##################################################
 
 function getCustomData() {
+  const ID = 54738;
   const XSS = "<script>a=b</script>";
-  const NAME = "XXX 1000";
-  const CYR = "Кириллические символы 👻 😄 😁";
-  const ALIAS = "ALIAS";
+  const NAME = "Name XXX 1000...";
+  const NAME_CYR = "Имя Кириллические символы... ¯_(ツ)_/¯";
+  const DESCTIPTION = "Description XXX 1000...";
+  const DESCTIPTION_CYR = "Описание Кириллические символы... ¯_(ツ)_/¯";
+  const ALIAS = "Only_Latin-letters";
   const DATE_1 = "2026-04-17 16:21:59";
   const DATE_2 = "2026-04-18 16:21:59";
   const DATE_3 = "2026-04-18 17:21:59";
 
   const customData = {
     JSON: {
-      ID: 54738,
+      ID: ID,
       Name: {
         en: `${NAME}`,
-        ru: `${CYR}`,
-        // ru: `${NAME} ${XSS}`,
+        ru: `${NAME_CYR}`,
       },
       Description: {
-        // en: `${NAME}`,
-        en: `${NAME}`,
-        ru: `${CYR}`,
-        // ru: `${NAME} ${XSS}`,
+        en: `${DESCTIPTION}`,
+        ru: DESCTIPTION_CYR,
+      },
+      Terms: {
+        en: "month terms322",
       },
       Images: {
-        description: "http://as.as/?s=1&a=2",
-        main: "",
+        main: "https://tes222.com/url",
+        description: "https://te222st.com/url",
+      },
+      LimitTicketsPerDeposit: 5,
+      CancelUponWithdrawal: {
+        EUR: 1,
+        RUB: 1,
+        USD: 1,
       },
       Price: {
         EUR: 1,
-        RUB: 0.12,
-        USD: 0.1,
-        BYN: "+0.1",
+        RUB: 1,
+        USD: 1,
       },
       DateStart: DATE_1,
       DateEnd: DATE_2,
       DrawingDate: DATE_3,
-      Repeat: "once",
+      Repeat: "month",
       Alias: `${ALIAS}`,
       Conditions: {
-        Levels: [1, 2],
-        DuplicateLevels: [3],
-        LanguageRestrictType: 1,
-        Languages: ["bg", "fr", "de"],
-        RegionRestrictType: 1,
-        Regions: ["ru"],
-        CategoriesRestrictType: 1,
-        Categories: [1, 2],
+        Levels: [],
+        DuplicateLevels: [],
+        LanguageRestrictType: 0,
+        Languages: [],
+        RegionRestrictType: 0,
+        Regions: [],
+        CategoriesRestrictType: 0,
+        Categories: [],
       },
       Results: [
         {
-          Type: "product",
-          Count: 1,
-          Name: {
-            en: "QATEST_LOTTERY_RESTRICTIONS",
-            // ru: `${XSS}`,
-          },
           Place: 1,
+          Count: 2,
+          Type: "bonus",
+          Value: 5,
         },
       ],
-      LimitTicketsPerDeposit: 0,
     },
     TID: "",
     Hash: "",
