@@ -11,7 +11,8 @@ LOYALTY = {
 
         // VARS AUTO
         this.pm = pm;
-        const TID = uuid.v4();
+        let TID = uuid.v4();
+        TID = `${TID}`;
         const hashArray = [];
 
         // ~...
