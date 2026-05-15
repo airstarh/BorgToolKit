@@ -1,6 +1,9 @@
 1; // ##################################################
 // VARS CUSTOM
-pm.collectionVariables.set("ROUTE_CURRENT", "Store/Items/Get");
+pm.collectionVariables.set(
+  "ROUTE_CURRENT",
+  "Loyalty/GetBonusesManuallyActivated"
+);
 const ROUTE_CURRENT = pm.collectionVariables.get("ROUTE_CURRENT");
 const options = {
   ROUTE_CURRENT: ROUTE_CURRENT,
@@ -23,11 +26,24 @@ function getCustomData() {
   const DATE_3 = "2026-04-11 17:21:59";
 
   const customData = {
-    TID: "FUNDIST",
-    ID: "252838",
+    TID: "SEWA",
+    Source: "Fundist",
+    Audit: {
+      User: {
+        ID: "281674407",
+        IP: "10.110.0.12",
+        Login: "adm_vazovsky",
+      },
+    },
+    From: "12.04.2026",
+    To: "12.05.2026",
+    IDOrName: "14267607",
+    // TotalSum: "1",
+    PageLength: "50",
+    Order: {
+      AddDate: "DESC",
+    },
     Hash: "",
-    req_uniq_id:
-      "site11-retn-dev-2:3740439:1775755970.734:662feadfd4e54eb939c07f59d6f30834",
   };
 
   return customData;

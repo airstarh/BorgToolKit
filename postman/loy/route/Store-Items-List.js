@@ -1,6 +1,6 @@
 1; // ##################################################
 // VARS CUSTOM
-pm.collectionVariables.set("ROUTE_CURRENT", "Store/Items/Get");
+pm.collectionVariables.set("ROUTE_CURRENT", "Store/Items/List");
 const ROUTE_CURRENT = pm.collectionVariables.get("ROUTE_CURRENT");
 const options = {
   ROUTE_CURRENT: ROUTE_CURRENT,
